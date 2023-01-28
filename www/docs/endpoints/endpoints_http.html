@@ -1,0 +1,2568 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>HTTP - edelkrone SDK</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../css/theme.css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+  <link href="../_assets/css/custom.css" rel="stylesheet" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "HTTP";
+    var mkdocs_page_input_path = "endpoints\\endpoints_http.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../index.html" class="icon icon-home"> edelkrone SDK</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../index.html">Home</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../flow.html">Flow</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../control.html">How to Control Your Devices</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../limitations.html">Limitations</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../config.html">Configuration</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">API Document</span></p>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="endpoints_http.html">HTTP</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#pairing">Pairing</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#wifi">Wifi</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#initiate-wireless-scan">Initiate wireless scan</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#get-current-wireless-scan-results">Get current wireless scan results</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#create-bundle">Create Bundle</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#attach-to-exist-bundle">Attach to Exist Bundle</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#get-pairing-status">Get Pairing Status</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#disconnect-from-bundle">Disconnect from bundle</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#default-return-values">Default Return Values</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#link">Link</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#get-link-devices-results">Get Link Devices results</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#connect-to-bundle">Connect to Bundle</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#get-pairing-status_1">Get Pairing Status</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#disconnect-from-bundle_1">Disconnect from bundle</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#default-return-values_1">Default Return Values</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#rj45">RJ45</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#connect-to-bundle_1">Connect to Bundle</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#default-return-values_2">Default Return Values</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#keypose">Keypose</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#keypose-store-current-pose">Keypose Store Current Pose</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#keypose-store-by-numeric-data">Keypose Store by Numeric Data</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#keypose-move-with-fixed-duration">Keypose Move with Fixed Duration</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#keypose-move-with-fixed-speed">Keypose Move with Fixed Speed</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#loop-between-keyposes-with-fixed-duration">Loop Between Keyposes with Fixed Duration</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#loop-between-keyposes-with-fixed-speed">Loop Between Keyposes with Fixed Speed</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#read-keypose-numeric-information">Read Keypose Numeric Information</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#delete-keypose">Delete Keypose</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#default-return-values_3">Default Return Values</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#move">Move</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#joystick-move">Joystick Move</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#focus-manual-move">Focus Manual Move</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#motion-abort">Motion Abort</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#calibration">Calibration</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#numeric-limits">Numeric Limits</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#default-return-values_4">Default Return Values</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#status">Status</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#other">Other</a>
+    </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="endpoints_ws.html">Websockets</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../tutorial_py.html">Example Code</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">About</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../release-notes.html">Release Notes</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">edelkrone SDK</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>API Document &raquo;</li>
+        
+      
+    
+    <li>HTTP</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="http-endpoints">HTTP Endpoints</h1>
+<p>You can communicate with HTTP/REST api over edelkrone SDK.</p>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p><u><strong>The SDK supports the only version of HTTP/1.1.</strong></u></p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>SDK does not provide an SSL connection. So you can only connect over HTTP.</p>
+</div>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>The SDK does not supported CORS, so when you send a request with "OPTIONS" method, the SDK return a error because a HTTP request of "Content-Type" is always sent as "text/plain" NOT "application/json".</p>
+</div>
+<h2 id="pairing">Pairing</h2>
+<p>Pairing means that the devices are connected to each other and can also communicate. The PC communicates over link devices with paired devices.</p>
+<p>In addition, paired devices are called "Bundle". You can also check <a href="#will-fill">What is Bundle?</a></p>
+<h3 id="wifi">Wifi</h3>
+<!-- BEGIN INCLUDE commands/link_module/link_wifi_commands.md &lt;!--intro-start--&gt; &lt;!--intro-end--&gt; -->
+
+<h4 id="initiate-wireless-scan">Initiate wireless scan</h4>
+<p><u><strong>URL</strong></u></p>
+<pre><code class="language-text">/v1/link/{linkID}
+</code></pre>
+<p><u><strong>Method</strong></u></p>
+<pre><code class="language-text">POST
+</code></pre>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>The SDK does not support CORS, so when you send a request with "OPTIONS" method, the SDK returns an error because a HTTP request of "Content-Type" is sent always as "text/plain" NOT "application/json".</p>
+</div>
+<p><u><strong>Payload</strong></u></p>
+<pre><code class="language-json">{
+  &quot;command&quot;:&quot;wirelessPairingScanStart&quot;
+}
+</code></pre>
+<table>
+<thead>
+<tr>
+<th align="left">Label</th>
+<th align="left">Type</th>
+<th align="center">Value</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>command</code></td>
+<td align="left"><code>string</code></td>
+<td align="center"><code>wirelessPairingScanStart</code></td>
+<td align="left">command name</td>
+</tr>
+</tbody>
+</table>
+<p><u><strong>Return value</strong></u></p>
+<p>See <a href="commands/link_module#default-return-values">default return values</a>.</p>
+<h4 id="get-current-wireless-scan-results">Get current wireless scan results</h4>
+<p><u><strong>URL</strong></u></p>
+<pre><code class="language-text">/v1/link/{linkID}
+</code></pre>
+<p><u><strong>Method</strong></u></p>
+<pre><code class="language-text">POST
+</code></pre>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>The SDK does not supported CORS, so when you send a request with "OPTIONS" method, the SDK returns an error because an HTTP request of "Content-Type" is always sent as "text/plain" NOT "application/json".</p>
+</div>
+<p><u><strong>Payload</strong></u></p>
+<pre><code class="language-json">{
+  &quot;command&quot;:&quot;wirelessPairingScanResults&quot;
+}
+</code></pre>
+<table>
+<thead>
+<tr>
+<th align="left">Label</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>command</code></td>
+<td align="left"><code>string</code></td>
+<td align="left"><code>wirelessPairingScanResults</code></td>
+</tr>
+</tbody>
+</table>
+<p><u><strong>Return value</strong></u></p>
+<pre><code class="language-json">{
+    &quot;data&quot;: [
+        {
+            &quot;deviceFirmware&quot;: 18,
+            &quot;groupId&quot;: 65535,
+            &quot;isDeviceFirmwareUpdateAvailable&quot;: false,
+            &quot;isRadioFirmwareUpdateAvailable&quot;: false,
+            &quot;linkPairigingActive&quot;: true,
+            &quot;mac&quot;: &quot;A4:E5:7C:CF:4F:66&quot;,
+            &quot;radioFirmware&quot;: 32,
+            &quot;rssi&quot;: -32.0,
+            &quot;setup&quot;: &quot;groupMember&quot;,
+            &quot;type&quot;: &quot;slideModuleV3&quot;
+        },
+        {
+            &quot;deviceFirmware&quot;: 101,
+            &quot;groupId&quot;: 23113,
+            &quot;isDeviceFirmwareUpdateAvailable&quot;: false,
+            &quot;isRadioFirmwareUpdateAvailable&quot;: false,
+            &quot;mac&quot;: &quot;E8:DB:84:2C:C4:76&quot;,
+            &quot;radioFirmware&quot;: 32,
+            &quot;rssi&quot;: -76.0,
+            &quot;setup&quot;: &quot;panTilt&quot;,
+            &quot;type&quot;: &quot;headPlusV2&quot;
+        },
+        {
+            &quot;deviceFirmware&quot;: 101,
+            &quot;groupId&quot;: 65535,
+            &quot;isDeviceFirmwareUpdateAvailable&quot;: false,
+            &quot;isRadioFirmwareUpdateAvailable&quot;: false,
+            &quot;linkPairigingActive&quot;: true,
+            &quot;mac&quot;: &quot;E8:DB:84:2C:D2:AE&quot;,
+            &quot;radioFirmware&quot;: 33,
+            &quot;rssi&quot;: -58.0,
+            &quot;setup&quot;: &quot;panTiltAndSlide&quot;,
+            &quot;type&quot;: &quot;headPlusV2&quot;
+        },
+        {
+            &quot;deviceFirmware&quot;: 101,
+            &quot;groupId&quot;: 16519,
+            &quot;isDeviceFirmwareUpdateAvailable&quot;: false,
+            &quot;isRadioFirmwareUpdateAvailable&quot;: false,
+            &quot;mac&quot;: &quot;98:F4:AB:21:A7:7E&quot;,
+            &quot;radioFirmware&quot;: 32,
+            &quot;rssi&quot;: -66.0,
+            &quot;setup&quot;: &quot;panTilt&quot;,
+            &quot;type&quot;: &quot;headPlusProV2&quot;
+        }
+    ],
+    &quot;result&quot;: &quot;ok&quot;
+}
+</code></pre>
+<table>
+<thead>
+<tr>
+<th align="left">Label</th>
+<th align="left">Type</th>
+<th align="center">Value</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>data</code></td>
+<td align="left"><code>device array</code></td>
+<td align="center"><code>[deviceinfo1, deviceinfo2]</code></td>
+<td align="left">Array of information of devices on canbus</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th align="left">Label</th>
+<th align="left">Type</th>
+<th align="left">Value</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>deviceFirmware</code></td>
+<td align="left"><code>int</code></td>
+<td align="left"></td>
+<td align="left">Device fimrware number</td>
+</tr>
+<tr>
+<td align="left"><code>groupId</code></td>
+<td align="left"><code>int</code></td>
+<td align="left"></td>
+<td align="left">Which group device is in</td>
+</tr>
+<tr>
+<td align="left"><code>linkPairigingActive</code></td>
+<td align="left"><code>bool</code></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"><code>IsTilted</code></td>
+<td align="left"><code>bool</code></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"><code>mac</code></td>
+<td align="left"><code>string</code></td>
+<td align="left"><code>FF:FF:FF:FF:FF:FF</code></td>
+<td align="left">Mac address as string, it should </br> be hex string</td>
+</tr>
+<tr>
+<td align="left"><code>rssi</code></td>
+<td align="left"><code>int</code></td>
+<td align="left"></td>
+<td align="left">Received signal </br>strength indication</td>
+</tr>
+<tr>
+<td align="left"><code>isDeviceFirmwareUpdateAvailable</code></td>
+<td align="left"><code>bool</code></td>
+<td align="left"></td>
+<td align="left">If there is exist a update available,</br> this flag will be true</td>
+</tr>
+<tr>
+<td align="left"><code>isRadioFirmwareUpdateAvailable</code></td>
+<td align="left"><code>bool</code></td>
+<td align="left"></td>
+<td align="left">If there is exist a update available,</br> this flag will be true</td>
+</tr>
+<tr>
+<td align="left"><code>radioFirmware</code></td>
+<td align="left"><code>int</code></td>
+<td align="left"></td>
+<td align="left">Radio Firmware Version</td>
+</tr>
+<tr>
+<td align="left"><code>setup</code></td>
+<td align="left"><code>string</code></td>
+<td align="left">If device is master device: <ul><li><code>panOnly</code></li><li><code>tiltOnly</code></li><li><code>panTilt</code></li><li><code>slideOnly</code></li><li><code>dollyOnly</code></li><li><code>panAndSlide</code></li><li><code>tiltAndSlide</code></li><li><code>panAndDolly</code></li><li><code>tiltAndDolly</code></li><li><code>panTiltAndSlide</code></li><li><code>panTiltAndDolly</code></li><ul><li><code>panAndJib</code></li><li><code>tiltAndJib</code></li><li><code>panTiltAndJib</code></li><li><code>jibOnly</code></li><li><code>panAndJibPlus</code></li><li><code>tiltAndJibPlus</code></li><li><code>panTiltAndJibPlus</code></li><li><code>jibPlusOnly</code></li><li><code>followFocusOnly</code></li><li><code>possibleCanbusMaster</code></li></ul>  If it is only bundle member: <li><code>groupMember</code></li>  If it is not paired yet: <li><code>none</code></li>  Other state: <li><code>bootingUp</code></li><li><code>firmwareError</code></li><li><code>ignore</code></li></ul></td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left"><code>type</code></td>
+<td align="left"><code>string</code></td>
+<td align="left">-</td>
+<td align="left">Device Type</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th align="left">Device Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>slideModule</code></td>
+</tr>
+<tr>
+<td align="left"><code>headPlus</code></td>
+</tr>
+<tr>
+<td align="left"><code>headPlusPro</code></td>
+</tr>
+<tr>
+<td align="left"><code>headOne</code></td>
+</tr>
+<tr>
+<td align="left"><code>surfaceOne</code></td>
+</tr>
+<tr>
+<td align="left"><code>dollyPlus</code></td>
+</tr>
+<tr>
+<td align="left"><code>sliderOnePro</code></td>
+</tr>
+<tr>
+<td align="left"><code>sliderOne</code></td>
+</tr>
+<tr>
+<td align="left"><code>dollyOne</code></td>
+</tr>
+<tr>
+<td align="left"><code>dollyPlusPro</code></td>
+</tr>
+<tr>
+<td align="left"><code>jibOne</code></td>
+</tr>
+<tr>
+<td align="left"><code>goldFinch</code></td>
+</tr>
+<tr>
+<td align="left"><code>slideModuleV3</code></td>
+</tr>
+<tr>
+<td align="left"><code>panPro</code></td>
+</tr>
+<tr>
+<td align="left"><code>jibOneMk2</code></td>
+</tr>
+<tr>
+<td align="left"><code>focusPlusPro</code></td>
+</tr>
+<tr>
+<td align="left"><code>headPlusV2</code></td>
+</tr>
+<tr>
+<td align="left"><code>headPlusProV2</code></td>
+</tr>
+<tr>
+<td align="left"><code>slideModuleV1</code></td>
+</tr>
+<tr>
+<td align="left"><code>none</code></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The scan wireless command should be sent before that command is sent. Otherwise, Link adapter does not return any device info.</p>
+</div>
+<h4 id="create-bundle">Create Bundle</h4>
+<p>Pairs devices and joins to them.</p>
+<p><u><strong>URL</strong></u></p>
+<pre><code class="language-text">/v1/link/{linkID}
+</code></pre>
+<p><u><strong>Method</strong></u></p>
+<pre><code class="language-text">POST
+</code></pre>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>The SDK does not support CORS, so when you send a request with "OPTIONS" method, the SDK return a error because an HTTP request of "Content-Type" is always sent as "text/plain" NOT "application/json".</p>
+</div>
+<p><u><strong>Payload</strong></u></p>
+<pre><code class="language-json">{
+    &quot;command&quot;: &quot;wirelessPairingCreateBundle&quot;,
+    &quot;deviceCount&quot;: 1,
+    &quot;forcedMasterDevice&quot;: &quot;none&quot;,
+    &quot;macList&quot;: [
+        &quot;E8:68:E7:2E:B5:E2&quot;
+    ]
+}
+</code></pre>
+<table>
+<thead>
+<tr>
+<th align="left">Label</th>
+<th align="left">Type</th>
+<th align="center">Value</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>command</code></td>
+<td align="left"><code>string</code></td>
+<td align="center"><code>wirelessPairingCreateBundle</code></td>
+<td align="left">command name</td>
+</tr>
+<tr>
+<td align="left"><code>deviceCount</code></td>
+<td align="left"><code>integer</code></td>
+<td align="center"><code>0 - ...</code></td>
+<td align="left">Number of device to be paired</td>
+</tr>
+<tr>
+<td align="left"><code>forcedMasterDevice</code></td>
+<td align="left"><code>string</code></td>
+<td align="center">-</td>
+<td align="left">Forced Device Type</td>
+</tr>
+<tr>
+<td align="left"><code>macList</code></td>
+<td align="left"><code>string</code></td>
+<td align="center"><code>FF:FF:FF:FF:FF:FF</code></td>
+<td align="left">Mac list of devices. Mac pattern</br> should be like "xx:xx:xx:xx:xx"</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th align="left">Forced Master Device</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>slideModule</code></td>
+</tr>
+<tr>
+<td align="left"><code>headPlus</code></td>
+</tr>
+<tr>
+<td align="left"><code>headPlusPro</code></td>
+</tr>
+<tr>
+<td align="left"><code>headOne</code></td>
+</tr>
+<tr>
+<td align="left"><code>surfaceOne</code></td>
+</tr>
+<tr>
+<td align="left"><code>dollyPlus</code></td>
+</tr>
+<tr>
+<td align="left"><code>sliderOnePro</code></td>
+</tr>
+<tr>
+<td align="left"><code>sliderOne</code></td>
+</tr>
+<tr>
+<td align="left"><code>dollyOne</code></td>
+</tr>
+<tr>
+<td align="left"><code>dollyPlusPro</code></td>
+</tr>
+<tr>
+<td align="left"><code>jibOne</code></td>
+</tr>
+<tr>
+<td align="left"><code>goldFinch</code></td>
+</tr>
+<tr>
+<td align="left"><code>slideModuleV3</code></td>
+</tr>
+<tr>
+<td align="left"><code>panPro</code></td>
+</tr>
+<tr>
+<td align="left"><code>jibOneMk2</code></td>
+</tr>
+<tr>
+<td align="left"><code>focusPlusPro</code></td>
+</tr>
+<tr>
+<td align="left"><code>headPlusV2</code></td>
+</tr>
+<tr>
+<td align="left"><code>headPlusProV2</code></td>
+</tr>
+<tr>
+<td align="left"><code>slideModuleV1</code></td>
+</tr>
+<tr>
+<td align="left"><code>none</code></td>
+</tr>
+</tbody>
+</table>
+<p><u><strong>Return value</strong></u></p>
+<p>See <a href="commands/link_module#default-return-values">default return values</a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The send mac addresses are reachable while creating the bundle. Otherwise, the pairing process will be crashed, in which case get pair state by using <a href="commands/link_module#get-pairing-status">this command</a>.</p>
+</div>
+<h4 id="attach-to-exist-bundle">Attach to Exist Bundle</h4>
+<p>Attach to already existing paired devices.</p>
+<p><u><strong>URL</strong></u></p>
+<pre><code class="language-text">/v1/link/{linkID}
+</code></pre>
+<p><u><strong>Method</strong></u></p>
+<pre><code class="language-text">POST
+</code></pre>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>The SDK does not support CORS, so when you send a request with "OPTIONS" method, the SDK returns an error because an HTTP request of "Content-Type" is sent always as "text/plain" NOT "application/json".</p>
+</div>
+<p><u><strong>Payload</strong></u></p>
+<pre><code class="language-json">{
+    &quot;command&quot;: &quot;wirelessPairingAttachToBundle&quot;,
+    &quot;mac&quot;: &quot;30:AE:A4:8F:B1:46&quot;
+}
+</code></pre>
+<table>
+<thead>
+<tr>
+<th align="left">Label</th>
+<th align="left">Type</th>
+<th align="center">Value</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>command</code></td>
+<td align="left"><code>string</code></td>
+<td align="center"><code>wirelessPairingAttachToBundle</code></td>
+<td align="left">command name</td>
+</tr>
+<tr>
+<td align="left"><code>mac</code></td>
+<td align="left"><code>string</code></td>
+<td align="center"><code>FF:FF:FF:FF:FF:FF</code></td>
+<td align="left">Which device mac you want to connect. </br>Mac pattern should be like "xx:xx:xx:xx:xx"</td>
+</tr>
+</tbody>
+</table>
+<p><u><strong>Return value</strong></u></p>
+<p>See <a href="commands/link_module#default-return-values">default return values</a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The send mac addresses are reachable while creating the bundle. Otherwise, the pairing process will be crashed, in which case get pair state by using <a href="commands/link_module#get-pairing-status">this command</a>.</p>
+</div>
+<h4 id="get-pairing-status">Get Pairing Status</h4>
+<p><u><strong>URL</strong></u></p>
+<pre><code class="language-text">/v1/link/{linkID}
+</code></pre>
+<p><u><strong>Method</strong></u></p>
+<pre><code class="language-text">POST
+</code></pre>
+<p>Caution !!!
+    The SDK does not support CORS, so when you send a request with "OPTIONS" method, the SDK returns an error because an HTTP request of "Content-Type" is always sent as "text/plain" NOT "application/json".</p>
+<p><u><strong>Payload</strong></u></p>
+<pre><code class="language-json">{
+  &quot;command&quot;:&quot;wirelessPairingStatus&quot;
+}
+</code></pre>
+<table>
+<thead>
+<tr>
+<th align="left">Label</th>
+<th align="left">Type</th>
+<th align="center">Value</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">command</td>
+<td align="left"><code>string</code></td>
+<td align="center"><code>wirelessPairingStatus</code></td>
+<td align="left">command name</td>
+</tr>
+</tbody>
+</table>
+<p><u><strong>Return value</strong></u></p>
+<pre><code class="language-json">{
+    &quot;data&quot;: {
+        &quot;lastPairError&quot;: &quot;none&quot;,
+        &quot;wirelessPairState&quot;: &quot;idle&quot;
+    },
+    &quot;result&quot;: &quot;ok&quot;
+}
+</code></pre>
+<table>
+<thead>
+<tr>
+<th align="left">Label</th>
+<th align="left">Type</th>
+<th align="center">Value</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>lastPairError</code></td>
+<td align="left"><code>string</code></td>
+<td align="center"><ul><li><code>none</code></li><li><code>wifiChannelMismatch</code></li><li><code>impossibleScenario</code></li><li><code>radioFirmwareUpdateRequired</code></li><li><code>deviceFirmwareUpdateRequired</code></li><li><code>unknown</code></li><li><code>deviceSearchProblem</code></li><li><code>alreadyGroupMember</code></li></ul><li><code>connectionProblem</code></li></ul></td>
+<td align="left">Last pair error</td>
+</tr>
+<tr>
+<td align="left"><code>pairState</code></td>
+<td align="left"><code>string</code></td>
+<td align="center"><ul><li><code>idle</code></li><li><code>connecting</code></li><li><code>connectionOk</code></li><li><code>problem</code></li></ul></td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<h4 id="disconnect-from-bundle">Disconnect from bundle</h4>
+<p><u><strong>URL</strong></u></p>
+<pre><code class="language-text">/v1/link/{linkID}
+</code></pre>
+<p><u><strong>Method</strong></u></p>
+<pre><code class="language-text">POST
+</code></pre>
+<p>Caution !!!
+    The SDK does not support CORS, so when you send a request with "OPTIONS" method, the SDK returns an error because an HTTP request of "Content-Type" is always sent as "text/plain" NOT "application/json".</p>
+<p><u><strong>Payload</strong></u></p>
+<pre><code class="language-json">{
+  &quot;command&quot;:&quot;disconnect&quot;
+}
+</code></pre>
+<table>
+<thead>
+<tr>
+<th align="left">Label</th>
+<th align="left">Type</th>
+<th align="center">Value</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>command</code></td>
+<td align="left"><code>string</code></td>
+<td align="center"><code>disconnect</code></td>
+<td align="left">command name</td>
+</tr>
+</tbody>
+</table>
+<p><u><strong>Return value</strong></u></p>
+<p>See <a href="commands/link_module#default-return-values">default return values</a>.</p>
+<h4 id="default-return-values">Default Return Values</h4>
+<pre><code class="language-json">{
+  &quot;result&quot;: &quot;ok&quot;
+}
+</code></pre>
+<p>System executed your command without any issues.</p>
+<pre><code class="language-json">{
+  &quot;result&quot;: &quot;Invalid Arguments&quot;
+}
+</code></pre>
+<p>Given arguments are invalid.</p>
+<!-- END INCLUDE -->
+
+<h3 id="link">Link</h3>
+<!-- BEGIN INCLUDE commands/link_module/link_can_commands.md &lt;!--intro-start--&gt; &lt;!--intro-end--&gt; -->
+
+<h4 id="get-link-devices-results">Get Link Devices results</h4>
+<p><u><strong>URL</strong></u></p>
+<pre><code class="language-text">/v1/link/{linkID}
+</code></pre>
+<p><u><strong>Method</strong></u></p>
+<pre><code class="language-text">POST
+</code></pre>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>The SDK does not supported CORS, so when you send a request with "OPTIONS" method, the SDK return a error because of HTTP request of "Content-Type" is sent always as "text/plain" NOT "application/json".</p>
+</div>
+<p><u><strong>Payload</strong></u></p>
+<pre><code class="language-json">{
+  &quot;command&quot;:&quot;link2PairingScanResults&quot;
+}
+</code></pre>
+<table>
+<thead>
+<tr>
+<th align="left">Label</th>
+<th align="left">Type</th>
+<th align="center">Value</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>command</code></td>
+<td align="left"><code>string</code></td>
+<td align="center"><code>link2PairingScanResults</code></td>
+<td align="left">command name</td>
+</tr>
+</tbody>
+</table>
+<p><u><strong>Return value</strong></u></p>
+<pre><code class="language-json">{
+    &quot;data&quot;: [
+        {
+            &quot;firmwareVersionMajor&quot;: 0,
+            &quot;firmwareVersionMinor&quot;: 18,
+            &quot;isDeviceFirmwareUpdateAvailable&quot;: false,
+            &quot;type&quot;: &quot;slideModuleV3&quot;
+        },
+        {
+            &quot;firmwareVersionMajor&quot;: 0,
+            &quot;firmwareVersionMinor&quot;: 101,
+            &quot;isDeviceFirmwareUpdateAvailable&quot;: false,
+            &quot;type&quot;: &quot;headPlusV2&quot;
+        }
+    ],
+    &quot;result&quot;: &quot;ok&quot;
+}
+</code></pre>
+<table>
+<thead>
+<tr>
+<th align="left">Label</th>
+<th align="left">Type</th>
+<th align="center">Value</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>data</code></td>
+<td align="left"><code>device array</code></td>
+<td align="center"><code>[deviceinfo1, deviceinfo2]</code></td>
+<td align="left">Array of information of devices on Link</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th align="left">Label</th>
+<th align="left">Type</th>
+<th align="left">Value</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>type</code></td>
+<td align="left"><code>string</code></td>
+<td align="left">-</td>
+<td align="left">Device Type</td>
+</tr>
+<tr>
+<td align="left"><code>firmwareVersionMajor</code></td>
+<td align="left"><code>int</code></td>
+<td align="left">-</td>
+<td align="left">Device Firmware Major Version</td>
+</tr>
+<tr>
+<td align="left"><code>firmwareVersionMinor</code></td>
+<td align="left"><code>int</code></td>
+<td align="left">-</td>
+<td align="left">Device fimrware Minor number</td>
+</tr>
+<tr>
+<td align="left"><code>isDeviceFirmwareUpdateAvailable</code></td>
+<td align="left"><code>bool</code></td>
+<td align="left">-</td>
+<td align="left">If there is exist a update available,</br> this flag will be true</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th align="left">Device Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>slideModule</code></td>
+</tr>
+<tr>
+<td align="left"><code>headPlus</code></td>
+</tr>
+<tr>
+<td align="left"><code>headPlusPro</code></td>
+</tr>
+<tr>
+<td align="left"><code>headOne</code></td>
+</tr>
+<tr>
+<td align="left"><code>surfaceOne</code></td>
+</tr>
+<tr>
+<td align="left"><code>dollyPlus</code></td>
+</tr>
+<tr>
+<td align="left"><code>sliderOnePro</code></td>
+</tr>
+<tr>
+<td align="left"><code>sliderOne</code></td>
+</tr>
+<tr>
+<td align="left"><code>dollyOne</code></td>
+</tr>
+<tr>
+<td align="left"><code>dollyPlusPro</code></td>
+</tr>
+<tr>
+<td align="left"><code>jibOne</code></td>
+</tr>
+<tr>
+<td align="left"><code>goldFinch</code></td>
+</tr>
+<tr>
+<td align="left"><code>slideModuleV3</code></td>
+</tr>
+<tr>
+<td align="left"><code>panPro</code></td>
+</tr>
+<tr>
+<td align="left"><code>jibOneMk2</code></td>
+</tr>
+<tr>
+<td align="left"><code>focusPlusPro</code></td>
+</tr>
+<tr>
+<td align="left"><code>headPlusV2</code></td>
+</tr>
+<tr>
+<td align="left"><code>headPlusProV2</code></td>
+</tr>
+<tr>
+<td align="left"><code>slideModuleV1</code></td>
+</tr>
+<tr>
+<td align="left"><code>none</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="connect-to-bundle">Connect to Bundle</h4>
+<p>Pairs devices and joins to them.</p>
+<p><u><strong>URL</strong></u></p>
+<pre><code class="language-text">/v1/link/{linkID}
+</code></pre>
+<p><u><strong>Method</strong></u></p>
+<pre><code class="language-text">POST
+</code></pre>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>The SDK does not supported CORS, so when you send a request with the "OPTIONS" method, the SDK returns an error because of HTTP request of "Content-Type" is always sent as "text/plain" NOT "application/json".</p>
+</div>
+<p><u><strong>Payload</strong></u></p>
+<pre><code class="language-json">{
+  &quot;command&quot;:&quot;link2PairingConnect&quot;
+}
+</code></pre>
+<table>
+<thead>
+<tr>
+<th align="left">Label</th>
+<th align="left">Type</th>
+<th align="center">Value</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>command</code></td>
+<td align="left"><code>string</code></td>
+<td align="center"><code>link2PairingConnect</code></td>
+<td align="left">command name</td>
+</tr>
+</tbody>
+</table>
+<p><u><strong>Return value</strong></u></p>
+<p>See <a href="commands/link_module#default-return-values">default return values</a>.</p>
+<h4 id="get-pairing-status_1">Get Pairing Status</h4>
+<p><u><strong>URL</strong></u></p>
+<pre><code class="language-text">/v1/link/{linkID}
+</code></pre>
+<p><u><strong>Method</strong></u></p>
+<pre><code class="language-text">POST
+</code></pre>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>The SDK does not support CORS, so when you send a request with "OPTIONS" method, the SDK returns an error because of HTTP request of "Content-Type" is sent always as "text/plain" NOT "application/json".</p>
+</div>
+<p><u><strong>Payload</strong></u></p>
+<pre><code class="language-json">{
+  &quot;command&quot;:&quot;link2PairingStatus&quot;
+}
+</code></pre>
+<table>
+<thead>
+<tr>
+<th align="left">Label</th>
+<th align="left">Type</th>
+<th align="center">Value</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>command</code></td>
+<td align="left"><code>string</code></td>
+<td align="center"><code>link2PairingStatus</code></td>
+<td align="left">command name</td>
+</tr>
+</tbody>
+</table>
+<p><u><strong>Return value</strong></u></p>
+<pre><code class="language-json">{
+    &quot;data&quot;: {
+        &quot;canbusPairState&quot;: &quot;pingReceived&quot;,
+        &quot;lastPairError&quot;: &quot;none&quot;
+    },
+    &quot;result&quot;: &quot;ok&quot;
+}
+</code></pre>
+<table>
+<thead>
+<tr>
+<th align="left">Label</th>
+<th align="left">Type</th>
+<th align="left">Value</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">canbusPairState</td>
+<td align="left"><code>string</code></td>
+<td align="left"><ul><li><code>idle</code></li><li><code>pingReceived</code></li><li><code>connecting</code></li><li><code>connectionOk</code></li></ul></td>
+<td align="left">Master device state</td>
+</tr>
+<tr>
+<td align="left">lastPairError</td>
+<td align="left"><code>string</code></td>
+<td align="left"><ul><li><code>none</code></li><li><code>imposiblleScenario</code></li><li><code>deviceFirmwareUpdateRequired</code></li><li><code>unknown</code></li><li><code>cantAppendDevice</code></li></ul></td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<h4 id="disconnect-from-bundle_1">Disconnect from bundle</h4>
+<p><u><strong>URL</strong></u></p>
+<pre><code class="language-text">/v1/link/{linkID}
+</code></pre>
+<p><u><strong>Method</strong></u></p>
+<pre><code class="language-text">POST
+</code></pre>
+<p>Caution !!!
+    The SDK does not support CORS, so when you send a request with "OPTIONS" method, the SDK returns an error because an HTTP request of "Content-Type" is always sent as "text/plain" NOT "application/json".</p>
+<p><u><strong>Payload</strong></u></p>
+<pre><code class="language-json">{
+  &quot;command&quot;:&quot;disconnect&quot;
+}
+</code></pre>
+<table>
+<thead>
+<tr>
+<th align="left">Label</th>
+<th align="left">Type</th>
+<th align="center">Value</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>command</code></td>
+<td align="left"><code>string</code></td>
+<td align="center"><code>disconnect</code></td>
+<td align="left">command name</td>
+</tr>
+</tbody>
+</table>
+<p><u><strong>Return value</strong></u></p>
+<p>See <a href="commands/link_module#default-return-values">default return values</a>.</p>
+<h4 id="default-return-values_1">Default Return Values</h4>
+<pre><code class="language-json">{
+  &quot;result&quot;: &quot;ok&quot;
+}
+</code></pre>
+<p>System executed your command without any issues.</p>
+<pre><code class="language-json">{
+  &quot;result&quot;: &quot;Invalid Arguments&quot;
+}
+</code></pre>
+<p>Given arguments are invalid.</p>
+<!-- END INCLUDE -->
+
+<h3 id="rj45">RJ45</h3>
+<!-- BEGIN INCLUDE commands/link_module/link_rj45_commands.md &lt;!--intro-start--&gt; &lt;!--intro-end--&gt; -->
+<h4 id="connect-to-bundle_1">Connect to Bundle</h4>
+<p>Pairs devices and joins to them.</p>
+<p><u><strong>URL</strong></u></p>
+<pre><code class="language-text">/v1/link/{linkID}
+</code></pre>
+<p><u><strong>Method</strong></u></p>
+<pre><code class="language-text">POST
+</code></pre>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>The SDK does not supported CORS, so when you send a request with "OPTIONS" method, the SDK return a error because of HTTP request of "Content-Type" is sent always as "text/plain" NOT "application/json".</p>
+</div>
+<p><u><strong>Payload</strong></u></p>
+<pre><code class="language-json">{
+  &quot;command&quot;:&quot;link1PairingConnect&quot;
+}
+</code></pre>
+<table>
+<thead>
+<tr>
+<th align="left">Label</th>
+<th align="left">Type</th>
+<th align="center">Value</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>command</code></td>
+<td align="left"><code>string</code></td>
+<td align="center"><code>link1PairingConnect</code></td>
+<td align="left">command name</td>
+</tr>
+</tbody>
+</table>
+<p><u><strong>Return value</strong></u></p>
+<p>See <a href="commands/link_module#default-return-values">default return values</a>.</p>
+<h4 id="default-return-values_2">Default Return Values</h4>
+<pre><code class="language-json">{
+  &quot;result&quot;: &quot;ok&quot;
+}
+</code></pre>
+<p>System executed your command without any issues.</p>
+<pre><code class="language-json">{
+  &quot;result&quot;: &quot;Invalid Arguments&quot;
+}
+</code></pre>
+<p>Given arguments are invalid.</p>
+<pre><code class="language-json">{
+  &quot;result&quot;: &quot;Device is paired&quot;
+}
+</code></pre>
+<p>Pairing is complete so no longer send any movement command</p>
+<!-- END INCLUDE -->
+
+<h2 id="keypose">Keypose</h2>
+<p>This commands is related to simple pose store and recall methods.</p>
+<!-- BEGIN INCLUDE commands/keypose/keypose.md &lt;!--intro-start--&gt; &lt;!--intro-end--&gt; -->
+<h4 id="keypose-store-current-pose">Keypose Store Current Pose</h4>
+<p><u><strong>URL</strong></u></p>
+<pre><code class="language-text">/v1/bundle/{linkID}
+</code></pre>
+<p><u><strong>Method</strong></u></p>
+<pre><code class="language-text">POST
+</code></pre>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>The SDK does not support CORS, so when you send a request with "OPTIONS" method, the SDK returns an error because an HTTP request of "Content-Type" is always sent as "text/plain" NOT "application/json".</p>
+</div>
+<p><u><strong>Payload</strong></u></p>
+<pre><code class="language-json">{
+  &quot;command&quot;: &quot;keyposeStoreCurrentPose&quot;,
+  &quot;index&quot;: 0,
+}
+</code></pre>
+<table>
+<thead>
+<tr>
+<th align="left">Label</th>
+<th align="left">Type</th>
+<th align="left">Value</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>command</code></td>
+<td align="left"><code>string</code></td>
+<td align="left"><code>keyposeStoreCurrentPose</code></td>
+<td align="left">command name</td>
+</tr>
+<tr>
+<td align="left"><code>index</code></td>
+<td align="left"><code>integer</code></td>
+<td align="left"><code>0 - 5</code></td>
+<td align="left">Keypose slot you want to store the current pose</td>
+</tr>
+</tbody>
+</table>
+<p><u><strong>Return value</strong></u></p>
+<p>See <a href="commands/keypose#default-return-values">default return values</a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Use this command to store your overall pose as a keypose. You can move your system to this location later by referencing with index.</p>
+</div>
+<h4 id="keypose-store-by-numeric-data">Keypose Store by Numeric Data</h4>
+<p><u><strong>URL</strong></u></p>
+<pre><code class="language-text">/v1/bundle/{linkID}
+</code></pre>
+<p><u><strong>Method</strong></u></p>
+<pre><code class="language-text">POST
+</code></pre>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>The SDK does not support CORS, so when you send a request with "OPTIONS" method, the SDK return a error because of HTTP request of "Content-Type" is sent always as "text/plain" NOT "application/json".</p>
+</div>
+<p><u><strong>Payload</strong></u></p>
+<pre><code class="language-json">{
+  &quot;command&quot;:&quot;keyposeStoreWithNumericData&quot;,
+  &quot;index&quot;:0,
+  &quot;{axis name}&quot;:&quot;{setpoint value}&quot;
+}
+</code></pre>
+<table>
+<thead>
+<tr>
+<th align="left">Label</th>
+<th align="left">Type</th>
+<th align="left">Value</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>command</code></td>
+<td align="left"><code>string</code></td>
+<td align="left"><code>keyposeStoreWithNumericData</code></td>
+<td align="left">command name</td>
+</tr>
+<tr>
+<td align="left"><code>index</code></td>
+<td align="left"><code>integer</code></td>
+<td align="left"><code>0 - 5</code></td>
+<td align="left">Keypose slot index you want to move</td>
+</tr>
+<tr>
+<td align="left"><code>axis name</code></td>
+<td align="left"><code>float</code></td>
+<td align="left"></td>
+<td align="left">In which axis direction you want to move</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th align="left">Axis Name</th>
+<th align="left">Type</th>
+<th align="left">Value Range</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>headPan</code></td>
+<td align="left"><code>float</code></td>
+<td align="left"><code>-180.0 - +180.0</code></td>
+</tr>
+<tr>
+<td align="left"><code>headTilt</code></td>
+<td align="left"><code>float</code></td>
+<td align="left"><code>-180.0 - +180.0</code></td>
+</tr>
+<tr>
+<td align="left"><code>slide</code></td>
+<td align="left"><code>float</code></td>
+<td align="left"><code>It depends your calibrations.</code></td>
+</tr>
+<tr>
+<td align="left"><code>focus</code></td>
+<td align="left"><code>float</code></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"><code>jibPlusPan</code></td>
+<td align="left"><code>float</code></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"><code>jibPlusTilt</code></td>
+<td align="left"><code>float</code></td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<p><u><strong>Example JSON</strong></u>
+You want to send command for three axes; Head Pan, Head Tilt and Slide;</p>
+<pre><code class="language-json">{
+  &quot;command&quot;:&quot;keyposeStoreWithNumericData&quot;,
+  &quot;index&quot;:0,
+  &quot;headPan&quot;:0.0,
+  &quot;headTilt&quot;:0.0,
+  &quot;slide&quot;:0.0,
+}
+</code></pre>
+<p><u><strong>Return value</strong></u></p>
+<p>See <a href="commands/keypose#default-return-values">default return values</a>.</p>
+<h4 id="keypose-move-with-fixed-duration">Keypose Move with Fixed Duration</h4>
+<p><u><strong>URL</strong></u></p>
+<pre><code class="language-text">POST /v1/bundle/{linkID}
+</code></pre>
+<p>Caution !!!
+    The SDK does not support CORS, so when you send a request with "OPTIONS" method, the SDK returns an error because an HTTP request of "Content-Type" is always sent as "text/plain" NOT "application/json".</p>
+<p><u><strong>Payload</strong></u></p>
+<pre><code class="language-json">{
+    &quot;command&quot;:&quot;keyposeMoveFixedDuration&quot;,
+    &quot;index&quot;:0,
+    &quot;duration&quot;:0.5,
+    &quot;acceleration&quot;:0.0
+}
+</code></pre>
+<table>
+<thead>
+<tr>
+<th align="left">Label</th>
+<th align="left">Type</th>
+<th align="center">Value</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>command</code></td>
+<td align="left"><code>string</code></td>
+<td align="center"><code>keyposeMoveFixedDuration</code></td>
+<td align="left">command name</td>
+</tr>
+<tr>
+<td align="left"><code>index</code></td>
+<td align="left"><code>integer</code></td>
+<td align="center"><code>0-5</code></td>
+<td align="left">Keypose slot index you want to move</td>
+</tr>
+<tr>
+<td align="left"><code>acceleration</code></td>
+<td align="left"><code>float</code></td>
+<td align="center"><code>0.0 - 1.0</code></td>
+<td align="left">Ease in / out amount. 0.0 is immediate move, 1.0 is most smooth</td>
+</tr>
+<tr>
+<td align="left"><code>duration</code></td>
+<td align="left"><code>float</code></td>
+<td align="center"><code>second</code></td>
+<td align="left">Planned motion duration</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>System doesn't guarantee that every movement will be completed as requested. If requested duration is lower than what system can achieve with 100% speed, system moves with 100% speed.</p>
+</div>
+<h4 id="keypose-move-with-fixed-speed">Keypose Move with Fixed Speed</h4>
+<p><u><strong>URL</strong></u></p>
+<pre><code class="language-text">POST /v1/bundle/{linkID}
+</code></pre>
+<p>Caution !!!
+    The SDK does not support CORS, so when you send a request with "OPTIONS" method, the SDK returns an error because an HTTP request of "Content-Type" is always sent as "text/plain" NOT "application/json".</p>
+<p><u><strong>Method</strong></u></p>
+<pre><code class="language-text">POST
+</code></pre>
+<p><u><strong>Payload</strong></u></p>
+<pre><code class="language-json">{
+  &quot;command&quot;: &quot;keyposeMoveFixedSpeed&quot;,
+  &quot;index&quot;: 0,
+  &quot;acceleration&quot;: 0.5,
+  &quot;speed&quot;: 8.0,
+}
+</code></pre>
+<table>
+<thead>
+<tr>
+<th align="left">Label</th>
+<th align="left">Type</th>
+<th align="center">Value</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>command</code></td>
+<td align="left"><code>string</code></td>
+<td align="center"><code>keyposeMoveFixedSpeed</code></td>
+<td align="left">command name</td>
+</tr>
+<tr>
+<td align="left"><code>index</code></td>
+<td align="left"><code>integer</code></td>
+<td align="center"><code>0-5</code></td>
+<td align="left">Keypose slot index you want to move</td>
+</tr>
+<tr>
+<td align="left"><code>acceleration</code></td>
+<td align="left"><code>float</code></td>
+<td align="center"><code>0.0 - 1.0</code></td>
+<td align="left">Ease in / out amount. 0.0 is immediate move, 1.0 is most smooth</td>
+</tr>
+<tr>
+<td align="left"><code>speed</code></td>
+<td align="left"><code>float</code></td>
+<td align="center"><code>-1.0 - +1.0</code></td>
+<td align="left">Speed ratio for motion</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>System doesn't guarantee that every movement will be completed as requested. If requested duration is lower than what system can achieve with 100% speed, system moves with 100% speed.</p>
+</div>
+<h4 id="loop-between-keyposes-with-fixed-duration">Loop Between Keyposes with Fixed Duration</h4>
+<p><u><strong>URL</strong></u></p>
+<pre><code class="language-text">POST /v1/bundle/{linkID}
+</code></pre>
+<p><u><strong>Method</strong></u></p>
+<pre><code class="language-text">POST
+</code></pre>
+<p>Caution !!!
+    The SDK does not support CORS, so when you send a request with "OPTIONS" method, the SDK returns an error because an HTTP request of "Content-Type" is always sent as "text/plain" NOT "application/json".</p>
+<p><u><strong>Payload</strong></u></p>
+<pre><code class="language-json">{
+    &quot;command&quot;:&quot;keyposeLoopFixedDuration&quot;,
+    &quot;index1&quot;:0,
+    &quot;index2&quot;:1,
+    &quot;duration&quot;:0.0,
+    &quot;acceleration&quot;:0.0
+}
+</code></pre>
+<table>
+<thead>
+<tr>
+<th align="left">Label</th>
+<th align="left">Type</th>
+<th align="center">Value</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>command</code></td>
+<td align="left"><code>string</code></td>
+<td align="center"><code>keyposeMoveFixedDuration</code></td>
+<td align="left">command name</td>
+</tr>
+<tr>
+<td align="left"><code>index1</code></td>
+<td align="left"><code>integer</code></td>
+<td align="center"><code>0 - 5</code></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"><code>index2</code></td>
+<td align="left"><code>integer</code></td>
+<td align="center"><code>0 - 5</code></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"><code>acceleration</code></td>
+<td align="left"><code>float</code></td>
+<td align="center"><code>0.0 - 1.0</code></td>
+<td align="left">Ease in / out amount. 0.0 is immediate move, 1.0 is most smooth</td>
+</tr>
+<tr>
+<td align="left"><code>duration</code></td>
+<td align="left"><code>float</code></td>
+<td align="center"><code>second</code></td>
+<td align="left">Planned motion duration</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>System doesn't guarantee that every movement will be completed as requested. If requested duration is lower than what system can achieve with 100% speed, system moves with 100% speed.</p>
+</div>
+<h4 id="loop-between-keyposes-with-fixed-speed">Loop Between Keyposes with Fixed Speed</h4>
+<p><u><strong>URL</strong></u></p>
+<pre><code class="language-text">POST /v1/bundle/{linkID}
+</code></pre>
+<p><u><strong>Method</strong></u></p>
+<pre><code class="language-text">POST
+</code></pre>
+<p>Caution !!!
+    The SDK does not support CORS, so when you send a request with "OPTIONS" method, the SDK returns an error because an HTTP request of "Content-Type" is always sent as "text/plain" NOT "application/json"..</p>
+<p><u><strong>Payload</strong></u></p>
+<pre><code class="language-json">{
+  &quot;command&quot;: &quot;keyposeLoopFixedSpeed&quot;,
+  &quot;index1&quot;: 0,
+  &quot;index2&quot;: 0,
+  &quot;acceleration&quot;: 0.5,
+  &quot;speed&quot;: 8.0,
+}
+</code></pre>
+<table>
+<thead>
+<tr>
+<th align="left">Label</th>
+<th align="left">Type</th>
+<th align="center">Value</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>command</code></td>
+<td align="left"><code>string</code></td>
+<td align="center"><code>keyposeLoopFixedSpeed</code></td>
+<td align="left">command name</td>
+</tr>
+<tr>
+<td align="left"><code>index1</code></td>
+<td align="left"><code>integer</code></td>
+<td align="center"><code>0 - 5</code></td>
+<td align="left">Keypose slot index you want to move</td>
+</tr>
+<tr>
+<td align="left"><code>acceleartion</code></td>
+<td align="left"><code>float</code></td>
+<td align="center"><code>0.0 - 1.0</code></td>
+<td align="left">Ease in / out amount. 0.0 is immediate move, 1.0 is most smooth</td>
+</tr>
+<tr>
+<td align="left"><code>speed</code></td>
+<td align="left"><code>float</code></td>
+<td align="center"><code>-1.0 - +1.0</code></td>
+<td align="left">Speed ratio for motion</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>System doesn't guarantee to move within you ask for it. If requested duration is lower than what system can achive with %100 speed, system moves with %100 speed.</p>
+</div>
+<h4 id="read-keypose-numeric-information">Read Keypose Numeric Information</h4>
+<p><u><strong>URL</strong></u></p>
+<pre><code class="language-text">POST /v1/bundle/{linkID}
+</code></pre>
+<p><u><strong>Method</strong></u></p>
+<pre><code class="language-text">POST
+</code></pre>
+<p>Caution !!!
+    The SDK does not support CORS, so when you send a request with "OPTIONS" method, the SDK returns an error because an HTTP request of "Content-Type" is always sent as "text/plain" NOT "application/json".</p>
+<p><u><strong>Payload</strong></u></p>
+<pre><code class="language-json">{
+  &quot;command&quot;: &quot;keyposeReadNumericValues&quot;,
+  &quot;index&quot;: 0
+}
+</code></pre>
+<table>
+<thead>
+<tr>
+<th align="left">Label</th>
+<th align="left">Type</th>
+<th align="center">Value</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>command</code></td>
+<td align="left"><code>string</code></td>
+<td align="center"><code>keyposeReadNumericValues</code></td>
+<td align="left">command name</td>
+</tr>
+<tr>
+<td align="left"><code>index</code></td>
+<td align="left"><code>integer</code></td>
+<td align="center"><code>0 - 5</code></td>
+<td align="left">Keypose slot index you want to get information about keypose</td>
+</tr>
+</tbody>
+</table>
+<p><u><strong>Return value</strong></u></p>
+<pre><code class="language-json">{
+  &quot;data&quot;: {
+        &quot;{axis_name}&quot;: &quot;{set_point}&quot;,
+    },
+    &quot;result&quot;: &quot;ok&quot;
+}
+</code></pre>
+<p><u><strong>Example Return</strong></u></p>
+<pre><code class="language-json">{
+    &quot;data&quot;: {
+        &quot;focus&quot;: 0,
+        &quot;headPan&quot;: 0.0,
+        &quot;headTilt&quot;: 0.0,
+        &quot;index&quot;: 0,
+        &quot;jibPlusPan&quot;: -1.0,
+        &quot;jibPlusTilt&quot;: -1.0,
+        &quot;slide&quot;: 0.0
+    },
+    &quot;result&quot;: &quot;ok&quot;
+}
+</code></pre>
+<table>
+<thead>
+<tr>
+<th align="left">Label</th>
+<th align="left">Type</th>
+<th align="left">Value</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">data</td>
+<td align="left"><code>string</code></td>
+<td align="left"><ul><li><code>none</code></li><li><code>running</code></li><li><code>error</code></li><li><code>multipleDevice</code></li><li><code>noDevice</code></li><li><code>finished</code></li></ul></td>
+<td align="left">Update status</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th align="left">Axis Name</th>
+<th align="left">Type</th>
+<th align="left">Value Range</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>headPan</code></td>
+<td align="left"><code>float</code></td>
+<td align="left"><code>-180.0 - +180.0</code></td>
+</tr>
+<tr>
+<td align="left"><code>headTilt</code></td>
+<td align="left"><code>float</code></td>
+<td align="left"><code>-180.0 - +180.0</code></td>
+</tr>
+<tr>
+<td align="left"><code>slide</code></td>
+<td align="left"><code>float</code></td>
+<td align="left"><code>It depends your calibrations.</code></td>
+</tr>
+<tr>
+<td align="left"><code>focus</code></td>
+<td align="left"><code>float</code></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"><code>jibPlusPan</code></td>
+<td align="left"><code>float</code></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"><code>jibPlusTilt</code></td>
+<td align="left"><code>float</code></td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<h4 id="delete-keypose">Delete Keypose</h4>
+<p>TO BE FILLED</p>
+<p><u><strong>URL</strong></u></p>
+<pre><code class="language-text">POST /v1/bundle/{linkID}
+</code></pre>
+<p><u><strong>Method</strong></u></p>
+<pre><code class="language-text">POST
+</code></pre>
+<p>Caution !!!
+    The SDK does not support CORS, so when you send a request with "OPTIONS" method, the SDK returns an error because an HTTP request of "Content-Type" is always sent as "text/plain" NOT "application/json".</p>
+<p><u><strong>Payload</strong></u></p>
+<pre><code class="language-json">{
+  &quot;command&quot;:&quot;keyposeDeletePose&quot;,
+  &quot;index&quot;:1
+}
+</code></pre>
+<table>
+<thead>
+<tr>
+<th align="left">Label</th>
+<th align="left">Type</th>
+<th align="center">Value</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>command</code></td>
+<td align="left"><code>string</code></td>
+<td align="center"><code>keyposeDeletePose</code></td>
+<td align="left">command name</td>
+</tr>
+<tr>
+<td align="left"><code>index</code></td>
+<td align="left"><code>integer</code></td>
+<td align="center"><code>0 - 5</code></td>
+<td align="left">Keypose slot index you want to get information about keypose</td>
+</tr>
+</tbody>
+</table>
+<h4 id="default-return-values_3">Default Return Values</h4>
+<pre><code class="language-json">{
+  &quot;result&quot;: &quot;ok&quot;
+}
+</code></pre>
+<p>Given arguments are invalid.</p>
+<pre><code class="language-json">{
+  &quot;result&quot;: &quot;invalid setup&quot;
+}
+</code></pre>
+<p>Given device is invalid</p>
+<!-- END INCLUDE -->
+
+<h2 id="move">Move</h2>
+<p>This command relates to move methods.</p>
+<!-- BEGIN INCLUDE commands/move/move.md &lt;!--intro-start--&gt; &lt;!--intro-end--&gt; -->
+<h3 id="joystick-move">Joystick Move</h3>
+<p><u><strong>URL</strong></u></p>
+<pre><code class="language-text">/v1/bundle/{linkID}
+</code></pre>
+<p><u><strong>Method</strong></u></p>
+<pre><code class="language-text">POST
+</code></pre>
+<p>Caution !!!
+    The SDK does not support CORS, so when you send a request with "OPTIONS" method, the SDK returns an error because an HTTP request of "Content-Type" is always sent as "text/plain" NOT "application/json".</p>
+<p><u><strong>Payload</strong></u></p>
+<pre><code class="language-json">{
+  &quot;command&quot;: &quot;joystickMove&quot;,
+  &quot;{axis_name}&quot;: &quot;{speed_ratio}&quot;
+}
+</code></pre>
+<table>
+<thead>
+<tr>
+<th align="left">Label</th>
+<th align="left">Type</th>
+<th align="center">Value</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>command</code></td>
+<td align="left"><code>string</code></td>
+<td align="center"><code>joystickMove</code></td>
+<td align="left">command name</td>
+</tr>
+<tr>
+<td align="left"><code>axis_name</code></td>
+<td align="left"><code>float</code></td>
+<td align="center">-</td>
+<td align="left">In which axis direction</br> you want to move and<br> its speed ratio.</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th align="left">Axis Name</th>
+<th align="left">Type</th>
+<th align="left">Value Range</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>headPan</code></td>
+<td align="left"><code>float</code></td>
+<td align="left"><code>-180.0 - +180.0</code></td>
+</tr>
+<tr>
+<td align="left"><code>headTilt</code></td>
+<td align="left"><code>float</code></td>
+<td align="left"><code>-180.0 - +180.0</code></td>
+</tr>
+<tr>
+<td align="left"><code>slide</code></td>
+<td align="left"><code>float</code></td>
+<td align="left"><code>It depends your calibrations.</code></td>
+</tr>
+<tr>
+<td align="left"><code>focus</code></td>
+<td align="left"><code>float</code></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"><code>jibPlusPan</code></td>
+<td align="left"><code>float</code></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"><code>jibPlusTilt</code></td>
+<td align="left"><code>float</code></td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>As in the example below, the desired direction to move must be given as the key and the speed value as a value.</p>
+</div>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>The SDK does not support CORS, so when you send a request with "OPTIONS" method, the SDK returns an error because an HTTP request of "Content-Type" is always sent as "text/plain" NOT "application/json".</p>
+</div>
+<p><u><strong>Example JSON</strong></u>
+You want to send command for three axes; Head Pan, Head Tilt and Slide;</p>
+<pre><code class="language-json">{
+  &quot;command&quot;:&quot;joystickMove&quot;,
+  &quot;index&quot;:0,
+  &quot;headPan&quot;:0.0,
+  &quot;headTilt&quot;:0.0,
+  &quot;slide&quot;:0.0,
+}
+</code></pre>
+<h3 id="focus-manual-move">Focus Manual Move</h3>
+<p><u><strong>URL</strong></u></p>
+<pre><code class="language-text">/v1/bundle/{linkID}
+</code></pre>
+<p><u><strong>Method</strong></u></p>
+<pre><code class="language-text">POST
+</code></pre>
+<p>Caution !!!
+    The SDK does not support CORS, so when you send a request with "OPTIONS" method, the SDK returns an error because an HTTP request of "Content-Type" is always sent as "text/plain" NOT "application/json".</p>
+<p><u><strong>Payload</strong></u></p>
+<pre><code class="language-json">{
+  &quot;command&quot;: &quot;focusManualMove&quot;,
+  &quot;deltaEnc&quot;: 10
+}
+</code></pre>
+<table>
+<thead>
+<tr>
+<th align="left">Label</th>
+<th align="left">Type</th>
+<th align="center">Value</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>command</code></td>
+<td align="left"><code>string</code></td>
+<td align="center"><code>focusManualMove</code></td>
+<td align="left">command name</td>
+</tr>
+<tr>
+<td align="left"><code>deltaEnc</code></td>
+<td align="left"><code>integer</code></td>
+<td align="center">``</td>
+<td align="left">encoder step</td>
+</tr>
+</tbody>
+</table>
+<h3 id="motion-abort">Motion Abort</h3>
+<p><u><strong>URL</strong></u></p>
+<pre><code class="language-text">/v1/bundle/{linkID}
+</code></pre>
+<p><u><strong>Method</strong></u></p>
+<pre><code class="language-text">POST
+</code></pre>
+<p>Caution !!!
+    The SDK does not support CORS, so when you send a request with "OPTIONS" method, the SDK returns an error because an HTTP request of "Content-Type" is always sent as "text/plain" NOT "application/json".</p>
+<p><u><strong>Payload</strong></u></p>
+<pre><code class="language-json">{
+  &quot;command&quot;: &quot;motionAbort&quot;
+}
+</code></pre>
+<table>
+<thead>
+<tr>
+<th align="left">Label</th>
+<th align="left">Type</th>
+<th align="center">Value</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>command</code></td>
+<td align="left"><code>string</code></td>
+<td align="center"><code>motionAbort</code></td>
+<td align="left">command name</td>
+</tr>
+</tbody>
+</table>
+<h3 id="calibration">Calibration</h3>
+<p><u><strong>URL</strong></u></p>
+<pre><code class="language-text">/v1/bundle/{linkID}
+</code></pre>
+<p><u><strong>Method</strong></u></p>
+<pre><code class="language-text">POST
+</code></pre>
+<p>Caution !!!
+    The SDK does not support CORS, so when you send a request with "OPTIONS" method, the SDK returns an error because an HTTP request of "Content-Type" is always sent as "text/plain" NOT "application/json".</p>
+<p><u><strong>Payload</strong></u></p>
+<pre><code class="language-json">{
+    &quot;command&quot;: &quot;calibrate&quot;,
+    &quot;device&quot;: &quot;slideModuleV3&quot;,
+    &quot;isOnGround&quot;: true,
+    &quot;isOnLeftSide&quot; : false,
+    &quot;jibLength&quot; = 2,
+    &quot;rodLength&quot; = 3
+}
+</code></pre>
+<p>|Label| Type | Value |Description|
+|:--- |:---- |:-----------|
+|<code>command</code> | <code>string</code> | <code>motionAbort</code> |calibrate name|
+|<code>device</code>| <code>string</code> |  Each device has own configuratation | Which axis you want to calibrate it.|
+| <code>jibLength</code> | <code>float</code> | | length of jib|
+| <code>rodLength</code> | <code>float</code> | | length of camera rod of jib|
+| <code>isOnGround</code> | <code>bool</code> | | If slider is on tripod, it should be true|
+| <code>isOnLeftSide</code> | <code>bool</code> | | If slide module is left side of slider, it should be true otherwise it will be false |</p>
+<ul><li>`slideModule`</li><li>`headPlus`</li><li>`headPlusPro`</li><li>`headOne`</li><li>`surfaceOne`</li><li>`dollyPlus`</li><li>`sliderOnePro`</li><li>`sliderOne`</li><li>`dollyOne`</li><li>`dollyPlusPro`</li><li>`jibOne`</li><li>`goldFinch`</li><li>`slideModuleV3`</li><li>`panPro`</li><li>`jibOneMk2`</li><li>`focusPlusPro`</li><li>`headPlusV2`</li><li>`headPlusProV2`</li><li>`slideModuleV1`</li><li>`none`</li></ul>
+
+<table>
+<thead>
+<tr>
+<th align="left">Device Type</th>
+<th align="left">Need Parameter</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>slideModule</code></td>
+<td align="left"><ul><li><code>isOnGround</code></li><li><code>isOnLeftSide</code></li></ul></td>
+</tr>
+<tr>
+<td align="left"><code>headPlus</code></td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left"><code>headPlusPro</code></td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left"><code>headOne</code></td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left"><code>surfaceOne</code></td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left"><code>dollyPlus</code></td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left"><code>sliderOnePro</code></td>
+<td align="left"><ul><li><code>isOnGround</code></li><li><code>isOnLeftSide</code></li></ul></td>
+</tr>
+<tr>
+<td align="left"><code>sliderOne</code></td>
+<td align="left"><ul><li><code>isOnGround</code></li><li><code>isOnLeftSide</code></li></ul></td>
+</tr>
+<tr>
+<td align="left"><code>dollyOne</code></td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left"><code>dollyPlusPro</code></td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left"><code>jibOne</code></td>
+<td align="left"><ul><li><code>jibLength</code></li><li><code>rodLength</code></li></ul></td>
+</tr>
+<tr>
+<td align="left"><code>goldFinch</code></td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left"><code>slideModuleV3</code></td>
+<td align="left"><ul><li><code>isOnGround</code></li><li><code>isOnLeftSide</code></li></ul></td>
+</tr>
+<tr>
+<td align="left"><code>panPro</code></td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left"><code>jibOneMk2</code></td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left"><code>focusPlusPro</code></td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left"><code>headPlusV2</code></td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left"><code>headPlusProV2</code></td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left"><code>slideModuleV1</code></td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left"><code>none</code></td>
+<td align="left">-</td>
+</tr>
+</tbody>
+</table>
+<p><u><strong>Example JSON</strong></u>
+You may want to send command for three axes; Head Pan, Head Tilt and Slide;</p>
+<pre><code class="language-json">{
+    &quot;command&quot;: &quot;calibrate&quot;,
+    &quot;device&quot;: &quot;slideModuleV3&quot;,
+    &quot;isOnGround&quot;: true,
+    &quot;isOnLeftSide&quot; : false
+}
+</code></pre>
+<h3 id="numeric-limits">Numeric Limits</h3>
+<p>Each axis has specific limit value and step value, this command returns these.</p>
+<p><u><strong>URL</strong></u></p>
+<pre><code class="language-text">/v1/bundle/{linkID}
+</code></pre>
+<p><u><strong>Method</strong></u></p>
+<pre><code class="language-text">POST
+</code></pre>
+<p>Caution !!!
+    The SDK does not support CORS, so when you send a request with "OPTIONS" method, the SDK returns an error because an HTTP request of "Content-Type" is always sent as "text/plain" NOT "application/json".</p>
+<p><u><strong>Payload</strong></u></p>
+<pre><code class="language-json">{
+  &quot;command&quot;:&quot;numericLimitValues&quot;
+}
+</code></pre>
+<table>
+<thead>
+<tr>
+<th align="left">Label</th>
+<th align="left">Type</th>
+<th align="center">Value</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>command</code></td>
+<td align="left"><code>string</code></td>
+<td align="center"><code>numericLimitValues</code></td>
+<td align="left">command name</td>
+</tr>
+</tbody>
+</table>
+<p><u><strong>Return value</strong></u></p>
+<pre><code class="language-json">{
+    &quot;pan_maxLimit&quot;: 36000.0,
+    &quot;pan_minLimit&quot;: -36000.0,
+    &quot;pan_step&quot;: 0.0006099999882280827,
+    &quot;result&quot;: &quot;ok&quot;,
+    &quot;tilt_maxLimit&quot;: 89.0999984741211,
+    &quot;tilt_minLimit&quot;: -89.0999984741211,
+    &quot;tilt_step&quot;: 0.0006099999882280827
+}
+</code></pre>
+<table>
+<thead>
+<tr>
+<th align="left">Label</th>
+<th align="left">Type</th>
+<th align="left">Value</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>panMaxLimit</code></td>
+<td align="left"><code>float list</code></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"><code>panMinLimit</code></td>
+<td align="left"><code>float</code></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"><code>panStep</code></td>
+<td align="left"><code>float</code></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"><code>tiltMaxLimit</code></td>
+<td align="left"><code>float</code></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"><code>tiltMinLimit</code></td>
+<td align="left"><code>float</code></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"><code>tiltStep</code></td>
+<td align="left"><code>float</code></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"><code>focusMaxLimit</code></td>
+<td align="left"><code>float</code></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"><code>focusMinLimit</code></td>
+<td align="left"><code>float</code></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"><code>focusStep</code></td>
+<td align="left"><code>float</code></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"><code>jibPanMaxLimit</code></td>
+<td align="left"><code>float</code></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"><code>jibPanMinLimit</code></td>
+<td align="left"><code>float</code></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"><code>jibPanStep</code></td>
+<td align="left"><code>float</code></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"><code>jibTiltMaxLimit</code></td>
+<td align="left"><code>float</code></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"><code>jibTiltMinLimit</code></td>
+<td align="left"><code>float</code></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"><code>jibPanStep</code></td>
+<td align="left"><code>float</code></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"><code>isDataReady</code></td>
+<td align="left"><code>bool</code></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<h3 id="default-return-values_4">Default Return Values</h3>
+<pre><code class="language-json">{
+  &quot;result&quot;: &quot;ok&quot;
+}
+</code></pre>
+<p>System executed your command without any issues.</p>
+<pre><code class="language-json">{
+  &quot;result&quot;: &quot;invalid setup&quot;
+}
+</code></pre>
+<p>Given device is invalid</p>
+<!-- END INCLUDE -->
+
+<h2 id="status">Status</h2>
+<p>This command relates to move methods.</p>
+<!-- BEGIN INCLUDE commands/status/status.md &lt;!--intro-start--&gt; &lt;!--intro-end--&gt; -->
+<p><u><strong>URL</strong></u></p>
+<pre><code class="language-text">/bundle/{linkID}/status
+</code></pre>
+<p><u><strong>Method</strong></u></p>
+<pre><code class="language-text">GET
+</code></pre>
+<p>Caution !!!
+    The SDK does not support CORS, so when you send a request with "OPTIONS" method, the SDK returns an error because an HTTP request of "Content-Type" is always sent as "text/plain" NOT "application/json".</p>
+<p><u><strong>Return value</strong></u></p>
+<pre><code class="language-json">{
+    &quot;data&quot;: {
+        &quot;calibratedAxes&quot;: [
+            {
+                &quot;axis&quot;: &quot;headPan&quot;,
+                &quot;device&quot;: &quot;headPlusV2&quot;
+            },
+            {
+                &quot;axis&quot;: &quot;headTilt&quot;,
+                &quot;device&quot;: &quot;headPlusV2&quot;
+            }
+        ],
+        &quot;deviceInfo&quot;: [
+            {
+                &quot;batteryLevel&quot;: 1.0,
+                &quot;deviceFirmwareVersion&quot;: 101,
+                &quot;type&quot;: &quot;headPlusV2&quot;
+            }
+        ],
+        &quot;deviceInfoEverythingReady&quot;: true,
+        &quot;keyposeLoopActive&quot;: false,
+        &quot;keyposeMotionAimIndex&quot;: 0,
+        &quot;keyposeMotionStartIndex&quot;: 0,
+        &quot;keyposeSlotsFilled&quot;: [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+        ],
+        &quot;plannedMotionProgress&quot;: 1.0,
+        &quot;plannedMotionSecs&quot;: 0.0,
+        &quot;readings&quot;: {
+            &quot;headPan&quot;: 89.95600128173828,
+            &quot;headTilt&quot;: 0.0
+        },
+        &quot;realTimeSupportedAxes&quot;: [],
+        &quot;state&quot;: &quot;idle&quot;,
+        &quot;supportedAxes&quot;: [
+            {
+                &quot;axis&quot;: &quot;headPan&quot;,
+                &quot;device&quot;: &quot;headPlusV2&quot;
+            },
+            {
+                &quot;axis&quot;: &quot;headTilt&quot;,
+                &quot;device&quot;: &quot;headPlusV2&quot;
+            }
+        ],
+        &quot;timestampDevice&quot;: 303462,
+        &quot;timestampEpoch&quot;: 1634645133077
+    },
+    &quot;result&quot;: &quot;ok&quot;
+}
+
+</code></pre>
+<table>
+<thead>
+<tr>
+<th align="left">Label</th>
+<th align="center">Type</th>
+<th align="left">Value</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>calibratedAxes</code></td>
+<td align="center"><code>string array</code></td>
+<td align="left"><ul><li><code>Head_Pan</code></li><li><code>Head_Tilt</code></li><li><code>Slide</code></li><li><code>Focus</code></li><li><code>Jib_Pan</code></li><li><code>Jib_Tilt</code></li></ul></td>
+<td align="left">Calibrated axes as string array</td>
+</tr>
+<tr>
+<td align="left"><code>deviceInfo</code></td>
+<td align="center"><code>device info array</code></td>
+<td align="left"><code>Each elements describes in below table</code></td>
+<td align="left">Array of information of devices</td>
+</tr>
+<tr>
+<td align="left"><code>deviceInfoEverythingReady</code></td>
+<td align="center"><code>bool</code></td>
+<td align="left"><code>true - false</code></td>
+<td align="left">It means that when it is</br> true, that can get information.</br> Otherwise, you can not</br> get information.</td>
+</tr>
+<tr>
+<td align="left"><code>keyposeLoopActive</code></td>
+<td align="center"><code>bool</code></td>
+<td align="left"><code>true - false</code></td>
+<td align="left">It means that if it is true,</br> your bundle is looping between</br> the specified keypose indexes.</td>
+</tr>
+<tr>
+<td align="left"><code>keyposeMotionAimIndex</code></td>
+<td align="center"><code>int</code></td>
+<td align="left"><code>0 - 5</code></td>
+<td align="left">aim index for keypose motion.</td>
+</tr>
+<tr>
+<td align="left"><code>keyposeMotionStartIndex</code></td>
+<td align="center"><code>int</code></td>
+<td align="left"><code>0 - 5</code></td>
+<td align="left">Index that before start</br> keypose motion.</td>
+</tr>
+<tr>
+<td align="left"><code>keyposeSlotsFilled</code></td>
+<td align="center"><code>bool array</code></td>
+<td align="left"><code>true - false</code></td>
+<td align="left">Array has six elements,</br> each element represents that</br> whether index is filled.</td>
+</tr>
+<tr>
+<td align="left"><code>plannedMotionProgress</code></td>
+<td align="center"><code>float</code></td>
+<td align="left"><code>0.0 - 1.0</code></td>
+<td align="left">It shows the percentage of </br>how many complete of </br> keypose motion. It is mapped </br> between 0.0 - 1.0.</td>
+</tr>
+<tr>
+<td align="left"><code>plannedMotionSecs</code></td>
+<td align="center"><code>float</code></td>
+<td align="left"><code></code></td>
+<td align="left">How many seconds </br>the keypose motion will take</td>
+</tr>
+<tr>
+<td align="left"><code>readings</code></td>
+<td align="center"><code>key-value pair array</code></td>
+<td align="left"><code>Each elements describes in below table</code></td>
+<td align="left">Array of information of each axis</td>
+</tr>
+<tr>
+<td align="left"><code>realTimeSupportedAxes</code></td>
+<td align="center"><code>string array</code></td>
+<td align="left"><ul><li><code>Head_Pan</code></li><li><code>Head_Tilt</code></li><li><code>Slide</code></li><li><code>Focus</code></li><li><code>Jib_Pan</code></li><li><code>Jib_Tilt</code></li></ul></td>
+<td align="left">Which axes the bundle has are </br> supported in Real-Time Move.</td>
+</tr>
+<tr>
+<td align="left"><code>state</code></td>
+<td align="center"><code>string</code></td>
+<td align="left"><ul><li><code>Idle</code></li><li><code>Keypose_Move</code></li><li><code>RealTime_Move</code></li><li><code>Focus_Calibration</code></li><li><code>Slider_Calibration</code></li><li><code>Joystick_Move</code></li><li><code>Unsupported_Activity</code></li></ul></td>
+<td align="left">Shows state of the bundle </br> movement.</td>
+</tr>
+<tr>
+<td align="left"><code>timestampDevice</code></td>
+<td align="center"><code>long int</code></td>
+<td align="left"><code></code></td>
+<td align="left">The status was generated </br>at this timestamp on</br> the master device.</td>
+</tr>
+<tr>
+<td align="left"><code>timestampEpoch</code></td>
+<td align="center"><code>long int</code></td>
+<td align="left"><code></code></td>
+<td align="left">The status was grabbed </br>from the SDK at </br>this timestamp.</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th align="left">Label</th>
+<th align="left">Type</th>
+<th align="left">Value</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>deviceFirmwareVersion</code></td>
+<td align="left"><code>int</code></td>
+<td align="left"></td>
+<td align="left">Device fimrware version</td>
+</tr>
+<tr>
+<td align="left"><code>batteryLevel</code></td>
+<td align="left"><code>int</code></td>
+<td align="left"><code>0 - 100</code></td>
+<td align="left">Battery level</td>
+</tr>
+<tr>
+<td align="left"><code>type</code></td>
+<td align="left"><code>string</code></td>
+<td align="left">-</td>
+<td align="left">Device Type</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th align="left">Device Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>slideModule</code></td>
+</tr>
+<tr>
+<td align="left"><code>headPlus</code></td>
+</tr>
+<tr>
+<td align="left"><code>headPlusPro</code></td>
+</tr>
+<tr>
+<td align="left"><code>headOne</code></td>
+</tr>
+<tr>
+<td align="left"><code>surfaceOne</code></td>
+</tr>
+<tr>
+<td align="left"><code>dollyPlus</code></td>
+</tr>
+<tr>
+<td align="left"><code>sliderOnePro</code></td>
+</tr>
+<tr>
+<td align="left"><code>sliderOne</code></td>
+</tr>
+<tr>
+<td align="left"><code>dollyOne</code></td>
+</tr>
+<tr>
+<td align="left"><code>dollyPlusPro</code></td>
+</tr>
+<tr>
+<td align="left"><code>jibOne</code></td>
+</tr>
+<tr>
+<td align="left"><code>goldFinch</code></td>
+</tr>
+<tr>
+<td align="left"><code>slideModuleV3</code></td>
+</tr>
+<tr>
+<td align="left"><code>panPro</code></td>
+</tr>
+<tr>
+<td align="left"><code>jibOneMk2</code></td>
+</tr>
+<tr>
+<td align="left"><code>focusPlusPro</code></td>
+</tr>
+<tr>
+<td align="left"><code>headPlusV2</code></td>
+</tr>
+<tr>
+<td align="left"><code>headPlusProV2</code></td>
+</tr>
+<tr>
+<td align="left"><code>slideModuleV1</code></td>
+</tr>
+<tr>
+<td align="left"><code>none</code></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th align="left">Label</th>
+<th align="left">Type</th>
+<th align="left">Value</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>readings</code> It may consist of one  </br> or more of the following:<ul><li>Head_Pan</li><li>Head_Tilt</li><li>Slide</li><li>Focus</li><li>Jib_Pan</li><li>Jib_Tilt</li></ul></td>
+<td align="left"><code>float</code></td>
+<td align="left"><ul><li><code>Head_Pan: -180 - 180</code></li><li><code>Head_Tilt: -180 - 180</code></li><li><code>Slide:</code></li><li><code>Focus:</code></li><li><code>Jib_Pan:</code></li><li><code>Jib_Tilt:</code></li></ul></td>
+<td align="left">In which axis direction</br> you want to move and<br> its speed ratio.</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You need to ask for this manually at regular intervals. Each request will return a status data without waiting for the contents to be updated. If you want to differentiate whether status is changed or not, you can use the <code>TimestampEpoch</code> field value.</p>
+</div>
+<!-- END INCLUDE -->
+
+<h2 id="other">Other</h2>
+<p>Details ...</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="endpoints_ws.html" class="btn btn-neutral float-right" title="Websockets">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../config.html" class="btn btn-neutral" title="Configuration"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../config.html" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="endpoints_ws.html" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme_extra.js" defer></script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="img/favicon.ico">
+  <title>Example Code - edelkrone SDK</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="css/theme.css" />
+  <link rel="stylesheet" href="css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+  <link href="_assets/css/custom.css" rel="stylesheet" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Example Code";
+    var mkdocs_page_input_path = "tutorial_py.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="js/jquery-2.1.1.min.js" defer></script>
+  <script src="js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="index.html" class="icon icon-home"> edelkrone SDK</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="index.html">Home</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="flow.html">Flow</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="control.html">How to Control Your Devices</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="limitations.html">Limitations</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="config.html">Configuration</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">API Document</span></p>
+                <ul class="current">
+                    <li class="toctree-l1"><a class="reference internal" href="endpoints/endpoints_http.html">HTTP</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="endpoints/endpoints_ws.html">Websockets</a>
+                    </li>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="tutorial_py.html">Example Code</a>
+    <ul class="current">
+    </ul>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">About</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="release-notes.html">Release Notes</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">edelkrone SDK</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>API Document &raquo;</li>
+        
+      
+    
+    <li>Example Code</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="python-tutorial-simple-keypose">Python Tutorial (Simple Keypose)</h1>
+<p>In this page, you can find an example in Python to do basic tasks with <em>edelkrone SDK</em></p>
+<pre><code class="language-python">
+# -----------------------------------------------------------------------------
+#
+#
+# -----------------------------------------------------------------------------
+import requests
+import datetime
+import websocket
+import functools
+import signal
+import json
+import time
+import sys
+
+# -----------------------------------------------------------------------------
+# Required for Windows for better print experience. Either this or remember to
+# call python with -u option every time.
+# -----------------------------------------------------------------------------
+print = functools.partial(print, flush=True)
+
+# -----------------------------------------------------------------------------
+# Urls for websocket and http requests
+# -----------------------------------------------------------------------------
+httpURL = &quot;http://127.0.0.1:32222/edelkrone&quot;
+wsURL = &quot;ws://127.0.0.1:32222/edelkrone&quot;
+
+# -----------------------------------------------------------------------------
+def linkDevicesQuery(debug=False):
+
+  # ...
+  url = httpURL + &quot;/device&quot;
+  payload = {&quot;command&quot;: &quot;device_found_list&quot;}
+  headers = {&quot;Content-Type&quot;: &quot;application/json&quot;}
+
+  # ...
+  response = requests.request(&quot;GET&quot;, url, headers=headers, json=payload, timeout=1)
+  response_json = json.loads(response.text)
+
+  # ...
+  if(debug == True):
+    print(&quot;&quot;)
+    print(&quot;LINK DEVICES QUERY&quot;)
+    print(&quot;==================\n&quot;)
+    print(json.dumps(response_json, indent=2))
+
+  # ...
+  return response_json
+
+# ---------------------------------------------------------------------------
+def statusQuery(socket, debug=False):
+
+  # ...
+  socket.send(json.dumps({}))
+  response = socket.recv()
+  response_json = json.loads(response)
+
+  # ...
+  if(debug == True):
+    print(&quot;&quot;)
+    print(&quot;PERIODIC STATUS&quot;)
+    print(&quot;===============\n&quot;)
+    print(json.dumps(response_json, indent=2))
+
+  # ...
+  return response_json
+
+# ---------------------------------------------------------------------------
+def connectToBundle_stopMotionModule(bundleID):
+
+  # ...
+  url = httpURL + &quot;/device&quot;
+  payload = {&quot;command&quot;: &quot;bundle_connect&quot;, &quot;uniqueID&quot;: bundleID}
+  headers = {&quot;Content-Type&quot;: &quot;application/json&quot;}
+
+  # ...
+  response = requests.request(&quot;GET&quot;, url, headers=headers, json=payload, timeout=1)
+  response_json = json.loads(response.text)
+  return response_json
+
+# ---------------------------------------------------------------------------
+def keyposeStoreNumeric(bundleID, pan, tilt, slide, focus, index):
+
+  # ...
+  url = httpURL + &quot;/device/&quot; + bundleID
+  payload = {
+    &quot;command&quot;: &quot;keypose_store_numeric&quot;,
+    &quot;tilt&quot;: tilt,
+    &quot;pan&quot;: pan,
+    &quot;slide&quot;: slide,
+    &quot;focus&quot;: focus,
+    &quot;index&quot;: index,
+    &quot;uniqueID&quot;: 1610356720
+  }
+  headers = {&quot;Content-Type&quot;: &quot;application/json&quot;}
+
+  # ...
+  response = requests.request(&quot;POST&quot;, url, headers=headers, json=payload, timeout=1)
+  response_json = json.loads(response.text)
+  return response_json
+
+# ---------------------------------------------------------------------------
+def keyposeMoveFixSpeed(
+  bundleID, startIndex, aimIndex, is_loop, accelIn, accelOut, relativeSpeed
+):
+  # ...
+  url = httpURL + &quot;/device/&quot; + bundleID
+  payload = {
+    &quot;command&quot;: &quot;keypose_move_fixed_speed&quot;,
+    &quot;start_index&quot;: startIndex,
+    &quot;aim_index&quot;: aimIndex,
+    &quot;is_loop&quot;: is_loop,
+    &quot;accel_in_ratio&quot;: accelIn,
+    &quot;accel_out_ratio&quot;: accelOut,
+    &quot;relative_speed&quot;: relativeSpeed,
+  }
+  headers = {&quot;Content-Type&quot;: &quot;application/json&quot;}
+
+  # ...
+  response = requests.request(&quot;POST&quot;, url, headers=headers, json=payload, timeout=1)
+  response_json = json.loads(response.text)
+  return response_json
+
+# ---------------------------------------------------------------------------
+def keyposeAbortMotion(bundleID):
+  # ...
+  url = httpURL + &quot;/device/&quot; + bundleID
+  payload = {&quot;command&quot;: &quot;keypose_abort&quot;}
+  headers = {&quot;Content-Type&quot;: &quot;application/json&quot;}
+
+  # ...
+  response = requests.request(&quot;POST&quot;, url, headers=headers, json=payload, timeout=1)
+  response_json = json.loads(response.text)
+  return response_json
+
+# ---------------------------------------------------------------------------
+if __name__ == &quot;__main__&quot;:
+
+  # ...
+  signal.signal(signal.SIGINT, signal.SIG_DFL)
+
+  # List currently connected link devices
+  linkDevices = linkDevicesQuery(debug=True)
+
+  # Get the bundleID (First one in the list)
+  bundleID = linkDevices[&quot;device_list&quot;][0][&quot;uniqueID&quot;]
+
+  # ...
+  connectToBundle_stopMotionModule(bundleID)
+  time.sleep(0.1) # Without this delay, daemon crashes
+
+  # ...
+  keyposeAbortMotion(bundleID)
+  print(&quot;\nKeypose abort motion&quot;)
+  time.sleep(1.0)
+
+  # ...
+  pan = 90.0
+  tilt = -30.0
+  slide = 0.0
+  focus = 0.0
+  index = 0
+  keyposeStoreNumeric(bundleID, pan, tilt, slide, focus, index)
+  print(&quot;\nKeypose storeNumeric slot#%d&quot; % index)
+  time.sleep(0.1)
+
+  # ...
+  pan = -30.0
+  tilt = 90.0
+  slide = 20.0
+  focus = 0.0
+  index = 1
+  keyposeStoreNumeric(bundleID, pan, tilt, slide, focus, index)
+  print(&quot;\nKeypose storeNumeric slot#%d&quot; % index)
+  time.sleep(0.1)
+
+  # ...
+  startIndex = 0
+  aimIndex = 1
+  is_loop = True
+  accelIn = 0.4
+  accelOut = 0.4
+  relativeSpeed = 0.9
+  keyposeMoveFixSpeed(
+    bundleID, startIndex, aimIndex, is_loop,
+    accelIn, accelOut, relativeSpeed
+  )
+
+  # Create the URL and connect to websocket
+  wsURL_status = wsURL + &quot;/device/&quot; + bundleID + &quot;/status&quot;
+  statusWebSocket = websocket.WebSocket()
+  statusWebSocket.connect(wsURL_status)
+
+  # ...
+  start = datetime.datetime.now()
+  lastStatus = datetime.datetime.now()
+  while(True):
+
+    # ...
+    now = datetime.datetime.now()
+
+    # ...
+    start_delta = now - start
+    lastStatus_delta = now - lastStatus
+
+    # ...
+    if(lastStatus_delta.total_seconds() &gt; 0.015):
+      lastStatus = now
+      statusQuery(statusWebSocket, debug=True)
+
+    # ...
+    if(start_delta.total_seconds() &gt; 20):
+      break
+
+  # ...
+  keyposeAbortMotion(bundleID)
+
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="release-notes.html" class="btn btn-neutral float-right" title="Release Notes">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="endpoints/endpoints_ws.html" class="btn btn-neutral" title="Websockets"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="endpoints/endpoints_ws.html" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="release-notes.html" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '.';</script>
+    <script src="js/theme_extra.js" defer></script>
+    <script src="js/theme.js" defer></script>
+      <script src="search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

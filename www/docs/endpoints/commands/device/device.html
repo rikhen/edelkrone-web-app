@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../../../img/favicon.ico">
+  <title>Device - edelkrone SDK</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../../css/theme.css" />
+  <link rel="stylesheet" href="../../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+  <link href="../../../_assets/css/custom.css" rel="stylesheet" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Device";
+    var mkdocs_page_input_path = "endpoints\\commands\\device\\device.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../../../index.html" class="icon icon-home"> edelkrone SDK</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../index.html">Home</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../overview.html">Overview</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../flow.html">Flow</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../control.html">How to Control Your Devices</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../limitations.html">Limitations</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../config.html">Configuration</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">API Document</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../endpoints_http.html">HTTP</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../endpoints_ws.html">Websockets</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../tutorial_py.html">Example Code</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">About</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../release-notes.html">Release Notes</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../index.html">edelkrone SDK</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../index.html">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Device &raquo;</li>
+        
+      
+        
+          <li>Commands &raquo;</li>
+        
+      
+        
+          <li>Endpoints &raquo;</li>
+        
+      
+    
+    <li>Device</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+
+          <div role="main">
+            <div class="section">
+              
+                <h3 id="get-link-module-list-and-status">Get Link Module List And Status</h3>
+<p>This command returns the status of link modules. Connection time if link modules are no longer plugged into the PC</p>
+<p><u><strong>URL</strong></u></p>
+<pre><code class="language-text">/v1/device
+</code></pre>
+<p><u><strong>Method</strong></u></p>
+<pre><code class="language-text">POST
+</code></pre>
+<p><u><strong>Payload</strong></u></p>
+<pre><code class="language-json">
+{
+    &quot;command&quot;: &quot;linkStatus&quot;
+}
+
+</code></pre>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>The SDK does not supported CORS, so when you send a request with "OPTIONS" method, the SDK returns an error because of HTTP request of "Content-Type" is always  sent as "text/plain" NOT "application/json".</p>
+</div>
+<p>Label| Type | Value | Description
+:--- |:---- |:-----------
+<code>command</code> | <code>string</code> | <code>linkStatus</code> | command name</p>
+<p><u><strong>Return value</strong></u></p>
+<pre><code class="language-json">{
+    &quot;data&quot;: [
+        {
+            &quot;initialFoundEpoch&quot;: &quot;1634625480462967400&quot;,
+            &quot;isDeviceFirmwareUpdateAvailable&quot;: false,
+            &quot;isDeviceFirmwareUpdateRequired&quot;: false,
+            &quot;isFirmwareCorrupted&quot;: false,
+            &quot;isPairingDone&quot;: false,
+            &quot;isRadioFirmwareUpdateAvailable&quot;: false,
+            &quot;isRadioFirmwareUpdateRequired&quot;: false,
+            &quot;isValid&quot;: true,
+            &quot;linkConnectionType&quot;: &quot;none&quot;,
+            &quot;linkID&quot;: &quot;206034415530&quot;,
+            &quot;linkType&quot;: &quot;linkAdapter&quot;,
+            &quot;portName&quot;: &quot;COM7&quot;
+        }
+    ],
+    &quot;result&quot;: &quot;ok&quot;
+}
+</code></pre>
+<table>
+<thead>
+<tr>
+<th align="left">Label</th>
+<th align="left">Type</th>
+<th align="center">Value</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>data</code></td>
+<td align="left"><code>device list</code></td>
+<td align="center"><code>[deviceinfo1, deviceinfo2]</code></td>
+<td align="left">List of identified link modules</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th align="left">Label</th>
+<th align="left">Type</th>
+<th align="left">Value</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>initialFoundEpoch</code></td>
+<td align="left"><code>string</code></td>
+<td align="left">-</td>
+<td align="left">Epoch time that the link module was first defined</td>
+</tr>
+<tr>
+<td align="left"><code>isRadioFirmwareUpdateAvailable</code></td>
+<td align="left"><code>bool</code></td>
+<td align="left"></td>
+<td align="left">If there is an available update for Link Radio device.</td>
+</tr>
+<tr>
+<td align="left"><code>isRadioFirmwareUpdateRequired</code></td>
+<td align="left"><code>bool</code></td>
+<td align="left"></td>
+<td align="left">If there is a required update for Link Radio device.</td>
+</tr>
+<tr>
+<td align="left"><code>isDeviceFirmwareUpdateRequired</code></td>
+<td align="left"><code>bool</code></td>
+<td align="left"></td>
+<td align="left">If there is a required update for Link device.</td>
+</tr>
+<tr>
+<td align="left"><code>isDeviceFirmwareUpdateAvailable</code></td>
+<td align="left"><code>bool</code></td>
+<td align="left"></td>
+<td align="left">If there is an available update for Link device.</td>
+</tr>
+<tr>
+<td align="left"><code>isPairingDone</code></td>
+<td align="left"><code>bool</code></td>
+<td align="left"><code>true - false</code></td>
+<td align="left">The value is true when pairing is done, otherwise false.</td>
+</tr>
+<tr>
+<td align="left"><code>isValid</code></td>
+<td align="left"><code>bool</code></td>
+<td align="left"><code>true - false</code></td>
+<td align="left">Returns true as long as the module is connected to the computer.  Otherwise returns false.</td>
+</tr>
+<tr>
+<td align="left"><code>linkConnectionType</code></td>
+<td align="left"><code>string</code></td>
+<td align="left"><ul><li><code>wireless</code></li><li><code>canbus</code></li><li><code>rj45</code></li><li><code>none</code></li></ul></td>
+<td align="left">List of identified link modules</td>
+</tr>
+<tr>
+<td align="left"><code>linkID</code></td>
+<td align="left"><code>string</code></td>
+<td align="left"><ul><li><code>For Stop Motion Module: 24 character length</code></li><li><code>For Link Adapter: 12 character length</code></li></ul></td>
+<td align="left">List of identified link modules</td>
+</tr>
+<tr>
+<td align="left"><code>linkType</code></td>
+<td align="left"><code>string</code></td>
+<td align="left"><ul><li><code>stopMotionModule</code></li><li><code>linkAdapter</code></li></ul></td>
+<td align="left">Indicates the type of module</td>
+</tr>
+<tr>
+<td align="left"><code>portName</code></td>
+<td align="left"><code>string</code></td>
+<td align="left"><code>For Windows: COM* - For Linux: ttyUSB*</code></td>
+<td align="left">USB port name, it varies according to OS.</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Link ID vary between link modules. For example; the Stop Motion Module has 24 character length Link ID But Link Adapter has a 12 character length</p>
+</div>
+<h4 id="link-device-firmware-update">Link Device Firmware Update</h4>
+<p>When Link device update is available or required. You can update  this command.</p>
+<p><u><strong>URL</strong></u></p>
+<pre><code class="language-text">/v1/device
+</code></pre>
+<p><u><strong>Method</strong></u></p>
+<pre><code class="language-text">POST
+</code></pre>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>The SDK does not supported CORS, so when you send a request with the "OPTIONS" method, the SDK returns an error because of HTTP request of "Content-Type" is always sent as "text/plain" NOT "application/json".</p>
+</div>
+<p><u><strong>Payload</strong></u></p>
+<pre><code class="language-json">{
+    &quot;command&quot;:&quot;startLinkDeviceFirmwareUpdate&quot;
+}
+</code></pre>
+<table>
+<thead>
+<tr>
+<th align="left">Label</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>command</code></td>
+<td align="left"><code>string</code></td>
+<td align="left"><code>startLinkDeviceFirmwareUpdate</code></td>
+</tr>
+</tbody>
+</table>
+<p><u><strong>Return value</strong></u></p>
+<p>See <a href="#default-return-values">default return values</a>.</p>
+<h4 id="get-link-device-firmware-update-status">Get Link Device Firmware Update Status</h4>
+<p>When update is started, it can be following with this command.</p>
+<p><u><strong>URL</strong></u></p>
+<pre><code class="language-text">/v1/link/{linkID}
+</code></pre>
+<p><u><strong>Method</strong></u></p>
+<pre><code class="language-text">POST
+</code></pre>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>The SDK does not support CORS, so when you send a request with "OPTIONS" method, the SDK returns an error because of HTTP request of "Content-Type" is sent always as "text/plain" NOT "application/json".</p>
+</div>
+<p><u><strong>Payload</strong></u></p>
+<pre><code class="language-json">{
+  &quot;command&quot;:&quot;linkDeviceFirmwareUpdateStatus&quot;
+}
+</code></pre>
+<table>
+<thead>
+<tr>
+<th align="left">Label</th>
+<th align="left">Type</th>
+<th align="center">Value</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>command</code></td>
+<td align="left"><code>string</code></td>
+<td align="center"><code>linkDeviceFirmwareUpdateStatus</code></td>
+<td align="left">command name</td>
+</tr>
+</tbody>
+</table>
+<p><u><strong>Return value</strong></u></p>
+<pre><code class="language-json">{
+  &quot;status&quot;: &quot;noDevice&quot;,
+  &quot;result&quot;: &quot;ok&quot;
+}
+</code></pre>
+<table>
+<thead>
+<tr>
+<th align="left">Label</th>
+<th align="left">Type</th>
+<th align="left">Value</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">NoDevice</td>
+<td align="left"><code>string</code></td>
+<td align="left"><ul><li><code>none</code></li><li><code>running</code></li><li><code>error</code></li><li><code>multipleDevice</code></li><li><code>noDevice</code></li><li><code>finished</code></li></ul></td>
+<td align="left">Update status</td>
+</tr>
+</tbody>
+</table>
+<h4 id="link-radio-firmware-update">Link Radio Firmware Update</h4>
+<p>When Link radio update is available or required. It can be updated with this command.</p>
+<p><u><strong>URL</strong></u></p>
+<pre><code class="language-text">/v1/device
+</code></pre>
+<p><u><strong>Method</strong></u></p>
+<pre><code class="language-text">POST
+</code></pre>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>The SDK does not supported CORS, so when you send a request with the "OPTIONS" method, the SDK returns an error because of HTTP request of "Content-Type" is always sent as "text/plain" NOT "application/json".</p>
+</div>
+<p><u><strong>Payload</strong></u></p>
+<pre><code class="language-json">{
+    &quot;command&quot;:&quot;startLinkRadioFirmwareUpdate&quot;
+}
+</code></pre>
+<table>
+<thead>
+<tr>
+<th align="left">Label</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>command</code></td>
+<td align="left"><code>string</code></td>
+<td align="left"><code>startLinkRadioFirmwareUpdate</code></td>
+</tr>
+</tbody>
+</table>
+<p><u><strong>Return value</strong></u></p>
+<p>See <a href="#default-return-values">default return values</a>.</p>
+<h4 id="get-link-radio-firmware-update-status">Get Link Radio Firmware Update Status</h4>
+<p>When update is started, it can be following with this command.</p>
+<p><u><strong>URL</strong></u></p>
+<pre><code class="language-text">/v1/link/{linkID}
+</code></pre>
+<p><u><strong>Method</strong></u></p>
+<pre><code class="language-text">POST
+</code></pre>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>The SDK does not support CORS, so when you send a request with "OPTIONS" method, the SDK returns an error because of HTTP request of "Content-Type" is sent always as "text/plain" NOT "application/json".</p>
+</div>
+<p><u><strong>Payload</strong></u></p>
+<pre><code class="language-json">{
+  &quot;command&quot;:&quot;linkRadioFirmwarUpdateStatus&quot;
+}
+</code></pre>
+<table>
+<thead>
+<tr>
+<th align="left">Label</th>
+<th align="left">Type</th>
+<th align="center">Value</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>command</code></td>
+<td align="left"><code>string</code></td>
+<td align="center"><code>linkRadioFirmwarUpdateStatus</code></td>
+<td align="left">command name</td>
+</tr>
+</tbody>
+</table>
+<p><u><strong>Return value</strong></u></p>
+<pre><code class="language-json">{
+  &quot;status&quot;: &quot;none&quot;,
+  &quot;result&quot;: &quot;ok&quot;
+}
+</code></pre>
+<table>
+<thead>
+<tr>
+<th align="left">Label</th>
+<th align="left">Type</th>
+<th align="left">Value</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">NoDevice</td>
+<td align="left"><code>string</code></td>
+<td align="left"><ul><li><code>none</code></li><li><code>running</code></li><li><code>error</code></li><li><code>finished</code></li></ul></td>
+<td align="left">Update status</td>
+</tr>
+</tbody>
+</table>
+<h4 id="default-return-values">Default Return Values</h4>
+<pre><code class="language-json">{
+  &quot;result&quot;: &quot;ok&quot;
+}
+</code></pre>
+<p>System executed your command without any issues.</p>
+<pre><code class="language-json">{
+  &quot;result&quot;: &quot;Invalid Arguments&quot;
+}
+</code></pre>
+<p>Given arguments are invalid.</p>
+<pre><code class="language-json">{
+  &quot;result&quot;: &quot;Not found Any Device&quot;
+}
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../keypose/keypose.html" class="btn btn-neutral float-right" title="Keypose">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../../endpoints_ws.html" class="btn btn-neutral" title="None"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../../endpoints_ws.html" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../keypose/keypose.html" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '../../..';</script>
+    <script src="../../../js/theme_extra.js" defer></script>
+    <script src="../../../js/theme.js" defer></script>
+      <script src="../../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

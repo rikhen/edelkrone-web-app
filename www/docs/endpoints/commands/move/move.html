@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../../../img/favicon.ico">
+  <title>Move - edelkrone SDK</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../../css/theme.css" />
+  <link rel="stylesheet" href="../../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+  <link href="../../../_assets/css/custom.css" rel="stylesheet" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Move";
+    var mkdocs_page_input_path = "endpoints\\commands\\move\\move.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../../../index.html" class="icon icon-home"> edelkrone SDK</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../index.html">Home</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../overview.html">Overview</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../flow.html">Flow</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../control.html">How to Control Your Devices</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../limitations.html">Limitations</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../config.html">Configuration</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">API Document</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../endpoints_http.html">HTTP</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../endpoints_ws.html">Websockets</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../tutorial_py.html">Example Code</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">About</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../release-notes.html">Release Notes</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../index.html">edelkrone SDK</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../index.html">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Move &raquo;</li>
+        
+      
+        
+          <li>Commands &raquo;</li>
+        
+      
+        
+          <li>Endpoints &raquo;</li>
+        
+      
+    
+    <li>Move</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+
+          <div role="main">
+            <div class="section">
+              
+                <h3 id="joystick-move">Joystick Move</h3>
+<p><u><strong>URL</strong></u></p>
+<pre><code class="language-text">/v1/bundle/{linkID}
+</code></pre>
+<p><u><strong>Method</strong></u></p>
+<pre><code class="language-text">POST
+</code></pre>
+<p>Caution !!!
+    The SDK does not support CORS, so when you send a request with "OPTIONS" method, the SDK returns an error because an HTTP request of "Content-Type" is always sent as "text/plain" NOT "application/json".</p>
+<p><u><strong>Payload</strong></u></p>
+<pre><code class="language-json">{
+  &quot;command&quot;: &quot;joystickMove&quot;,
+  &quot;{axis_name}&quot;: &quot;{speed_ratio}&quot;
+}
+</code></pre>
+<table>
+<thead>
+<tr>
+<th align="left">Label</th>
+<th align="left">Type</th>
+<th align="center">Value</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>command</code></td>
+<td align="left"><code>string</code></td>
+<td align="center"><code>joystickMove</code></td>
+<td align="left">command name</td>
+</tr>
+<tr>
+<td align="left"><code>axis_name</code></td>
+<td align="left"><code>float</code></td>
+<td align="center">-</td>
+<td align="left">In which axis direction</br> you want to move and<br> its speed ratio.</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th align="left">Axis Name</th>
+<th align="left">Type</th>
+<th align="left">Value Range</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>headPan</code></td>
+<td align="left"><code>float</code></td>
+<td align="left"><code>-180.0 - +180.0</code></td>
+</tr>
+<tr>
+<td align="left"><code>headTilt</code></td>
+<td align="left"><code>float</code></td>
+<td align="left"><code>-180.0 - +180.0</code></td>
+</tr>
+<tr>
+<td align="left"><code>slide</code></td>
+<td align="left"><code>float</code></td>
+<td align="left"><code>It depends your calibrations.</code></td>
+</tr>
+<tr>
+<td align="left"><code>focus</code></td>
+<td align="left"><code>float</code></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"><code>jibPlusPan</code></td>
+<td align="left"><code>float</code></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"><code>jibPlusTilt</code></td>
+<td align="left"><code>float</code></td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>As in the example below, the desired direction to move must be given as the key and the speed value as a value.</p>
+</div>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>The SDK does not support CORS, so when you send a request with "OPTIONS" method, the SDK returns an error because an HTTP request of "Content-Type" is always sent as "text/plain" NOT "application/json".</p>
+</div>
+<p><u><strong>Example JSON</strong></u>
+You want to send command for three axes; Head Pan, Head Tilt and Slide;</p>
+<pre><code class="language-json">{
+  &quot;command&quot;:&quot;joystickMove&quot;,
+  &quot;index&quot;:0,
+  &quot;headPan&quot;:0.0,
+  &quot;headTilt&quot;:0.0,
+  &quot;slide&quot;:0.0,
+}
+</code></pre>
+<h3 id="focus-manual-move">Focus Manual Move</h3>
+<p><u><strong>URL</strong></u></p>
+<pre><code class="language-text">/v1/bundle/{linkID}
+</code></pre>
+<p><u><strong>Method</strong></u></p>
+<pre><code class="language-text">POST
+</code></pre>
+<p>Caution !!!
+    The SDK does not support CORS, so when you send a request with "OPTIONS" method, the SDK returns an error because an HTTP request of "Content-Type" is always sent as "text/plain" NOT "application/json".</p>
+<p><u><strong>Payload</strong></u></p>
+<pre><code class="language-json">{
+  &quot;command&quot;: &quot;focusManualMove&quot;,
+  &quot;deltaEnc&quot;: 10
+}
+</code></pre>
+<table>
+<thead>
+<tr>
+<th align="left">Label</th>
+<th align="left">Type</th>
+<th align="center">Value</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>command</code></td>
+<td align="left"><code>string</code></td>
+<td align="center"><code>focusManualMove</code></td>
+<td align="left">command name</td>
+</tr>
+<tr>
+<td align="left"><code>deltaEnc</code></td>
+<td align="left"><code>integer</code></td>
+<td align="center">``</td>
+<td align="left">encoder step</td>
+</tr>
+</tbody>
+</table>
+<h3 id="motion-abort">Motion Abort</h3>
+<p><u><strong>URL</strong></u></p>
+<pre><code class="language-text">/v1/bundle/{linkID}
+</code></pre>
+<p><u><strong>Method</strong></u></p>
+<pre><code class="language-text">POST
+</code></pre>
+<p>Caution !!!
+    The SDK does not support CORS, so when you send a request with "OPTIONS" method, the SDK returns an error because an HTTP request of "Content-Type" is always sent as "text/plain" NOT "application/json".</p>
+<p><u><strong>Payload</strong></u></p>
+<pre><code class="language-json">{
+  &quot;command&quot;: &quot;motionAbort&quot;
+}
+</code></pre>
+<table>
+<thead>
+<tr>
+<th align="left">Label</th>
+<th align="left">Type</th>
+<th align="center">Value</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>command</code></td>
+<td align="left"><code>string</code></td>
+<td align="center"><code>motionAbort</code></td>
+<td align="left">command name</td>
+</tr>
+</tbody>
+</table>
+<h3 id="calibration">Calibration</h3>
+<p><u><strong>URL</strong></u></p>
+<pre><code class="language-text">/v1/bundle/{linkID}
+</code></pre>
+<p><u><strong>Method</strong></u></p>
+<pre><code class="language-text">POST
+</code></pre>
+<p>Caution !!!
+    The SDK does not support CORS, so when you send a request with "OPTIONS" method, the SDK returns an error because an HTTP request of "Content-Type" is always sent as "text/plain" NOT "application/json".</p>
+<p><u><strong>Payload</strong></u></p>
+<pre><code class="language-json">{
+    &quot;command&quot;: &quot;calibrate&quot;,
+    &quot;device&quot;: &quot;slideModuleV3&quot;,
+    &quot;isOnGround&quot;: true,
+    &quot;isOnLeftSide&quot; : false,
+    &quot;jibLength&quot; = 2,
+    &quot;rodLength&quot; = 3
+}
+</code></pre>
+<p>|Label| Type | Value |Description|
+|:--- |:---- |:-----------|
+|<code>command</code> | <code>string</code> | <code>motionAbort</code> |calibrate name|
+|<code>device</code>| <code>string</code> |  Each device has own configuratation | Which axis you want to calibrate it.|
+| <code>jibLength</code> | <code>float</code> | | length of jib|
+| <code>rodLength</code> | <code>float</code> | | length of camera rod of jib|
+| <code>isOnGround</code> | <code>bool</code> | | If slider is on tripod, it should be true|
+| <code>isOnLeftSide</code> | <code>bool</code> | | If slide module is left side of slider, it should be true otherwise it will be false |</p>
+<ul><li>`slideModule`</li><li>`headPlus`</li><li>`headPlusPro`</li><li>`headOne`</li><li>`surfaceOne`</li><li>`dollyPlus`</li><li>`sliderOnePro`</li><li>`sliderOne`</li><li>`dollyOne`</li><li>`dollyPlusPro`</li><li>`jibOne`</li><li>`goldFinch`</li><li>`slideModuleV3`</li><li>`panPro`</li><li>`jibOneMk2`</li><li>`focusPlusPro`</li><li>`headPlusV2`</li><li>`headPlusProV2`</li><li>`slideModuleV1`</li><li>`none`</li></ul>
+
+<table>
+<thead>
+<tr>
+<th align="left">Device Type</th>
+<th align="left">Need Parameter</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>slideModule</code></td>
+<td align="left"><ul><li><code>isOnGround</code></li><li><code>isOnLeftSide</code></li></ul></td>
+</tr>
+<tr>
+<td align="left"><code>headPlus</code></td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left"><code>headPlusPro</code></td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left"><code>headOne</code></td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left"><code>surfaceOne</code></td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left"><code>dollyPlus</code></td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left"><code>sliderOnePro</code></td>
+<td align="left"><ul><li><code>isOnGround</code></li><li><code>isOnLeftSide</code></li></ul></td>
+</tr>
+<tr>
+<td align="left"><code>sliderOne</code></td>
+<td align="left"><ul><li><code>isOnGround</code></li><li><code>isOnLeftSide</code></li></ul></td>
+</tr>
+<tr>
+<td align="left"><code>dollyOne</code></td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left"><code>dollyPlusPro</code></td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left"><code>jibOne</code></td>
+<td align="left"><ul><li><code>jibLength</code></li><li><code>rodLength</code></li></ul></td>
+</tr>
+<tr>
+<td align="left"><code>goldFinch</code></td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left"><code>slideModuleV3</code></td>
+<td align="left"><ul><li><code>isOnGround</code></li><li><code>isOnLeftSide</code></li></ul></td>
+</tr>
+<tr>
+<td align="left"><code>panPro</code></td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left"><code>jibOneMk2</code></td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left"><code>focusPlusPro</code></td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left"><code>headPlusV2</code></td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left"><code>headPlusProV2</code></td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left"><code>slideModuleV1</code></td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left"><code>none</code></td>
+<td align="left">-</td>
+</tr>
+</tbody>
+</table>
+<p><u><strong>Example JSON</strong></u>
+You may want to send command for three axes; Head Pan, Head Tilt and Slide;</p>
+<pre><code class="language-json">{
+    &quot;command&quot;: &quot;calibrate&quot;,
+    &quot;device&quot;: &quot;slideModuleV3&quot;,
+    &quot;isOnGround&quot;: true,
+    &quot;isOnLeftSide&quot; : false
+}
+</code></pre>
+<h3 id="numeric-limits">Numeric Limits</h3>
+<p>Each axis has specific limit value and step value, this command returns these.</p>
+<p><u><strong>URL</strong></u></p>
+<pre><code class="language-text">/v1/bundle/{linkID}
+</code></pre>
+<p><u><strong>Method</strong></u></p>
+<pre><code class="language-text">POST
+</code></pre>
+<p>Caution !!!
+    The SDK does not support CORS, so when you send a request with "OPTIONS" method, the SDK returns an error because an HTTP request of "Content-Type" is always sent as "text/plain" NOT "application/json".</p>
+<p><u><strong>Payload</strong></u></p>
+<pre><code class="language-json">{
+  &quot;command&quot;:&quot;numericLimitValues&quot;
+}
+</code></pre>
+<table>
+<thead>
+<tr>
+<th align="left">Label</th>
+<th align="left">Type</th>
+<th align="center">Value</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>command</code></td>
+<td align="left"><code>string</code></td>
+<td align="center"><code>numericLimitValues</code></td>
+<td align="left">command name</td>
+</tr>
+</tbody>
+</table>
+<p><u><strong>Return value</strong></u></p>
+<pre><code class="language-json">{
+    &quot;pan_maxLimit&quot;: 36000.0,
+    &quot;pan_minLimit&quot;: -36000.0,
+    &quot;pan_step&quot;: 0.0006099999882280827,
+    &quot;result&quot;: &quot;ok&quot;,
+    &quot;tilt_maxLimit&quot;: 89.0999984741211,
+    &quot;tilt_minLimit&quot;: -89.0999984741211,
+    &quot;tilt_step&quot;: 0.0006099999882280827
+}
+</code></pre>
+<table>
+<thead>
+<tr>
+<th align="left">Label</th>
+<th align="left">Type</th>
+<th align="left">Value</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>panMaxLimit</code></td>
+<td align="left"><code>float list</code></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"><code>panMinLimit</code></td>
+<td align="left"><code>float</code></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"><code>panStep</code></td>
+<td align="left"><code>float</code></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"><code>tiltMaxLimit</code></td>
+<td align="left"><code>float</code></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"><code>tiltMinLimit</code></td>
+<td align="left"><code>float</code></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"><code>tiltStep</code></td>
+<td align="left"><code>float</code></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"><code>focusMaxLimit</code></td>
+<td align="left"><code>float</code></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"><code>focusMinLimit</code></td>
+<td align="left"><code>float</code></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"><code>focusStep</code></td>
+<td align="left"><code>float</code></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"><code>jibPanMaxLimit</code></td>
+<td align="left"><code>float</code></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"><code>jibPanMinLimit</code></td>
+<td align="left"><code>float</code></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"><code>jibPanStep</code></td>
+<td align="left"><code>float</code></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"><code>jibTiltMaxLimit</code></td>
+<td align="left"><code>float</code></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"><code>jibTiltMinLimit</code></td>
+<td align="left"><code>float</code></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"><code>jibPanStep</code></td>
+<td align="left"><code>float</code></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"><code>isDataReady</code></td>
+<td align="left"><code>bool</code></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<h3 id="default-return-values">Default Return Values</h3>
+<pre><code class="language-json">{
+  &quot;result&quot;: &quot;ok&quot;
+}
+</code></pre>
+<p>System executed your command without any issues.</p>
+<pre><code class="language-json">{
+  &quot;result&quot;: &quot;invalid setup&quot;
+}
+</code></pre>
+<p>Given device is invalid</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../status/status.html" class="btn btn-neutral float-right" title="Status">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../link_module/link_wifi_commands.html" class="btn btn-neutral" title="Link wifi commands"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../link_module/link_wifi_commands.html" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../status/status.html" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '../../..';</script>
+    <script src="../../../js/theme_extra.js" defer></script>
+    <script src="../../../js/theme.js" defer></script>
+      <script src="../../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

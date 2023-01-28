@@ -1,0 +1,56 @@
+
+h1 {
+  color: #000000;
+  font-size: 32px;
+}
+
+h2 {
+  padding: 4px;
+  background-color: #F4F4F4;
+}
+
+h3 {
+  color: #444444;
+}
+
+h4 {
+  color: #666666;
+}
+
+h5 {
+  color: #010209;
+  background-color: #F4F4F4;
+  font-size: 18px;
+}
+
+table {
+  border: 1px solid black;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+th {
+  background-color: #eeeeee;
+}
+
+th, td {
+  padding: 7px;
+}
+
+.warn {
+  border: 5px solid red;
+  padding: 20px;
+}
+
+.info {
+  border: 5px solid blue;
+  padding: 20px;
+}
+
+.wy-nav-content {
+  max-width: 1000px !important;
+}
+
+.wy-side-nav-search{ background-color:#000000 }
+
+.wy-side-scroll{ background-color:#000000 }

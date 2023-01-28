@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../../../img/favicon.ico">
+  <title>Status - edelkrone SDK</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../../css/theme.css" />
+  <link rel="stylesheet" href="../../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+  <link href="../../../_assets/css/custom.css" rel="stylesheet" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Status";
+    var mkdocs_page_input_path = "endpoints\\commands\\status\\status.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../../../index.html" class="icon icon-home"> edelkrone SDK</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../index.html">Home</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../overview.html">Overview</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../flow.html">Flow</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../control.html">How to Control Your Devices</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../limitations.html">Limitations</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../config.html">Configuration</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">API Document</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../endpoints_http.html">HTTP</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../endpoints_ws.html">Websockets</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../tutorial_py.html">Example Code</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">About</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../release-notes.html">Release Notes</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../index.html">edelkrone SDK</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../index.html">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Status &raquo;</li>
+        
+      
+        
+          <li>Commands &raquo;</li>
+        
+      
+        
+          <li>Endpoints &raquo;</li>
+        
+      
+    
+    <li>Status</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+
+          <div role="main">
+            <div class="section">
+              
+                <p><u><strong>URL</strong></u></p>
+<pre><code class="language-text">/bundle/{linkID}/status
+</code></pre>
+<p><u><strong>Method</strong></u></p>
+<pre><code class="language-text">GET
+</code></pre>
+<p>Caution !!!
+    The SDK does not support CORS, so when you send a request with "OPTIONS" method, the SDK returns an error because an HTTP request of "Content-Type" is always sent as "text/plain" NOT "application/json".</p>
+<p><u><strong>Return value</strong></u></p>
+<pre><code class="language-json">{
+    &quot;data&quot;: {
+        &quot;calibratedAxes&quot;: [
+            {
+                &quot;axis&quot;: &quot;headPan&quot;,
+                &quot;device&quot;: &quot;headPlusV2&quot;
+            },
+            {
+                &quot;axis&quot;: &quot;headTilt&quot;,
+                &quot;device&quot;: &quot;headPlusV2&quot;
+            }
+        ],
+        &quot;deviceInfo&quot;: [
+            {
+                &quot;batteryLevel&quot;: 1.0,
+                &quot;deviceFirmwareVersion&quot;: 101,
+                &quot;type&quot;: &quot;headPlusV2&quot;
+            }
+        ],
+        &quot;deviceInfoEverythingReady&quot;: true,
+        &quot;keyposeLoopActive&quot;: false,
+        &quot;keyposeMotionAimIndex&quot;: 0,
+        &quot;keyposeMotionStartIndex&quot;: 0,
+        &quot;keyposeSlotsFilled&quot;: [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+        ],
+        &quot;plannedMotionProgress&quot;: 1.0,
+        &quot;plannedMotionSecs&quot;: 0.0,
+        &quot;readings&quot;: {
+            &quot;headPan&quot;: 89.95600128173828,
+            &quot;headTilt&quot;: 0.0
+        },
+        &quot;realTimeSupportedAxes&quot;: [],
+        &quot;state&quot;: &quot;idle&quot;,
+        &quot;supportedAxes&quot;: [
+            {
+                &quot;axis&quot;: &quot;headPan&quot;,
+                &quot;device&quot;: &quot;headPlusV2&quot;
+            },
+            {
+                &quot;axis&quot;: &quot;headTilt&quot;,
+                &quot;device&quot;: &quot;headPlusV2&quot;
+            }
+        ],
+        &quot;timestampDevice&quot;: 303462,
+        &quot;timestampEpoch&quot;: 1634645133077
+    },
+    &quot;result&quot;: &quot;ok&quot;
+}
+
+</code></pre>
+<table>
+<thead>
+<tr>
+<th align="left">Label</th>
+<th align="center">Type</th>
+<th align="left">Value</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>calibratedAxes</code></td>
+<td align="center"><code>string array</code></td>
+<td align="left"><ul><li><code>Head_Pan</code></li><li><code>Head_Tilt</code></li><li><code>Slide</code></li><li><code>Focus</code></li><li><code>Jib_Pan</code></li><li><code>Jib_Tilt</code></li></ul></td>
+<td align="left">Calibrated axes as string array</td>
+</tr>
+<tr>
+<td align="left"><code>deviceInfo</code></td>
+<td align="center"><code>device info array</code></td>
+<td align="left"><code>Each elements describes in below table</code></td>
+<td align="left">Array of information of devices</td>
+</tr>
+<tr>
+<td align="left"><code>deviceInfoEverythingReady</code></td>
+<td align="center"><code>bool</code></td>
+<td align="left"><code>true - false</code></td>
+<td align="left">It means that when it is</br> true, that can get information.</br> Otherwise, you can not</br> get information.</td>
+</tr>
+<tr>
+<td align="left"><code>keyposeLoopActive</code></td>
+<td align="center"><code>bool</code></td>
+<td align="left"><code>true - false</code></td>
+<td align="left">It means that if it is true,</br> your bundle is looping between</br> the specified keypose indexes.</td>
+</tr>
+<tr>
+<td align="left"><code>keyposeMotionAimIndex</code></td>
+<td align="center"><code>int</code></td>
+<td align="left"><code>0 - 5</code></td>
+<td align="left">aim index for keypose motion.</td>
+</tr>
+<tr>
+<td align="left"><code>keyposeMotionStartIndex</code></td>
+<td align="center"><code>int</code></td>
+<td align="left"><code>0 - 5</code></td>
+<td align="left">Index that before start</br> keypose motion.</td>
+</tr>
+<tr>
+<td align="left"><code>keyposeSlotsFilled</code></td>
+<td align="center"><code>bool array</code></td>
+<td align="left"><code>true - false</code></td>
+<td align="left">Array has six elements,</br> each element represents that</br> whether index is filled.</td>
+</tr>
+<tr>
+<td align="left"><code>plannedMotionProgress</code></td>
+<td align="center"><code>float</code></td>
+<td align="left"><code>0.0 - 1.0</code></td>
+<td align="left">It shows the percentage of </br>how many complete of </br> keypose motion. It is mapped </br> between 0.0 - 1.0.</td>
+</tr>
+<tr>
+<td align="left"><code>plannedMotionSecs</code></td>
+<td align="center"><code>float</code></td>
+<td align="left"><code></code></td>
+<td align="left">How many seconds </br>the keypose motion will take</td>
+</tr>
+<tr>
+<td align="left"><code>readings</code></td>
+<td align="center"><code>key-value pair array</code></td>
+<td align="left"><code>Each elements describes in below table</code></td>
+<td align="left">Array of information of each axis</td>
+</tr>
+<tr>
+<td align="left"><code>realTimeSupportedAxes</code></td>
+<td align="center"><code>string array</code></td>
+<td align="left"><ul><li><code>Head_Pan</code></li><li><code>Head_Tilt</code></li><li><code>Slide</code></li><li><code>Focus</code></li><li><code>Jib_Pan</code></li><li><code>Jib_Tilt</code></li></ul></td>
+<td align="left">Which axes the bundle has are </br> supported in Real-Time Move.</td>
+</tr>
+<tr>
+<td align="left"><code>state</code></td>
+<td align="center"><code>string</code></td>
+<td align="left"><ul><li><code>Idle</code></li><li><code>Keypose_Move</code></li><li><code>RealTime_Move</code></li><li><code>Focus_Calibration</code></li><li><code>Slider_Calibration</code></li><li><code>Joystick_Move</code></li><li><code>Unsupported_Activity</code></li></ul></td>
+<td align="left">Shows state of the bundle </br> movement.</td>
+</tr>
+<tr>
+<td align="left"><code>timestampDevice</code></td>
+<td align="center"><code>long int</code></td>
+<td align="left"><code></code></td>
+<td align="left">The status was generated </br>at this timestamp on</br> the master device.</td>
+</tr>
+<tr>
+<td align="left"><code>timestampEpoch</code></td>
+<td align="center"><code>long int</code></td>
+<td align="left"><code></code></td>
+<td align="left">The status was grabbed </br>from the SDK at </br>this timestamp.</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th align="left">Label</th>
+<th align="left">Type</th>
+<th align="left">Value</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>deviceFirmwareVersion</code></td>
+<td align="left"><code>int</code></td>
+<td align="left"></td>
+<td align="left">Device fimrware version</td>
+</tr>
+<tr>
+<td align="left"><code>batteryLevel</code></td>
+<td align="left"><code>int</code></td>
+<td align="left"><code>0 - 100</code></td>
+<td align="left">Battery level</td>
+</tr>
+<tr>
+<td align="left"><code>type</code></td>
+<td align="left"><code>string</code></td>
+<td align="left">-</td>
+<td align="left">Device Type</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th align="left">Device Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>slideModule</code></td>
+</tr>
+<tr>
+<td align="left"><code>headPlus</code></td>
+</tr>
+<tr>
+<td align="left"><code>headPlusPro</code></td>
+</tr>
+<tr>
+<td align="left"><code>headOne</code></td>
+</tr>
+<tr>
+<td align="left"><code>surfaceOne</code></td>
+</tr>
+<tr>
+<td align="left"><code>dollyPlus</code></td>
+</tr>
+<tr>
+<td align="left"><code>sliderOnePro</code></td>
+</tr>
+<tr>
+<td align="left"><code>sliderOne</code></td>
+</tr>
+<tr>
+<td align="left"><code>dollyOne</code></td>
+</tr>
+<tr>
+<td align="left"><code>dollyPlusPro</code></td>
+</tr>
+<tr>
+<td align="left"><code>jibOne</code></td>
+</tr>
+<tr>
+<td align="left"><code>goldFinch</code></td>
+</tr>
+<tr>
+<td align="left"><code>slideModuleV3</code></td>
+</tr>
+<tr>
+<td align="left"><code>panPro</code></td>
+</tr>
+<tr>
+<td align="left"><code>jibOneMk2</code></td>
+</tr>
+<tr>
+<td align="left"><code>focusPlusPro</code></td>
+</tr>
+<tr>
+<td align="left"><code>headPlusV2</code></td>
+</tr>
+<tr>
+<td align="left"><code>headPlusProV2</code></td>
+</tr>
+<tr>
+<td align="left"><code>slideModuleV1</code></td>
+</tr>
+<tr>
+<td align="left"><code>none</code></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th align="left">Label</th>
+<th align="left">Type</th>
+<th align="left">Value</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>readings</code> It may consist of one  </br> or more of the following:<ul><li>Head_Pan</li><li>Head_Tilt</li><li>Slide</li><li>Focus</li><li>Jib_Pan</li><li>Jib_Tilt</li></ul></td>
+<td align="left"><code>float</code></td>
+<td align="left"><ul><li><code>Head_Pan: -180 - 180</code></li><li><code>Head_Tilt: -180 - 180</code></li><li><code>Slide:</code></li><li><code>Focus:</code></li><li><code>Jib_Pan:</code></li><li><code>Jib_Tilt:</code></li></ul></td>
+<td align="left">In which axis direction</br> you want to move and<br> its speed ratio.</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You need to ask for this manually at regular intervals. Each request will return a status data without waiting for the contents to be updated. If you want to differentiate whether status is changed or not, you can use the <code>TimestampEpoch</code> field value.</p>
+</div>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../../link_modules/link_adapter.html" class="btn btn-neutral float-right" title="Link adapter">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../move/move.html" class="btn btn-neutral" title="Move"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../move/move.html" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../../../link_modules/link_adapter.html" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '../../..';</script>
+    <script src="../../../js/theme_extra.js" defer></script>
+    <script src="../../../js/theme.js" defer></script>
+      <script src="../../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

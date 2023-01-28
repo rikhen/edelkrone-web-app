@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Link adapter - edelkrone SDK</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../css/theme.css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+  <link href="../_assets/css/custom.css" rel="stylesheet" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Link adapter";
+    var mkdocs_page_input_path = "link_modules\\link_adapter.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../index.html" class="icon icon-home"> edelkrone SDK</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../index.html">Home</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../flow.html">Flow</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../control.html">How to Control Your Devices</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../limitations.html">Limitations</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../config.html">Configuration</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">API Document</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../endpoints/endpoints_http.html">HTTP</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../endpoints/endpoints_ws.html">Websockets</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../tutorial_py.html">Example Code</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">About</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../release-notes.html">Release Notes</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">edelkrone SDK</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Link modules &raquo;</li>
+        
+      
+    
+    <li>Link adapter</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+
+          <div role="main">
+            <div class="section">
+              
+                <p>Link Adapter provides communication with three types of connection. These are;
+Wireless
+RJ45
+Canbus
+Each connection type has a specific connection, pairing, and method of motion.</p>
+<p>You can manage your device(s) by following the image below.</p>
+<p><img alt="smm_diagram" src="../res/link_adapter_flow.png" /></p>
+<p>Each Link Adapter has a unique link id, with a length of 12 characters. </p>
+<p>for example;</p>
+<p><code>205F344B5530</code></p>
+<p>All commands need this Link ID. </p>
+<h3 id="wireless">Wireless</h3>
+<p>The wireless connection does not need another physical connection except a connection between Link Adapter and the PC.</p>
+<table>
+<thead>
+<tr>
+<th align="left">Supported Connection Type</th>
+<th align="left">Supported Device</th>
+<th align="left">Supported Move Type</th>
+<th align="left">Supported Real-Time Axis</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><ul><li>Wireless</li></ul></td>
+<td align="left">All Devices</td>
+<td align="left"><ul><li>Joystick Move</li><li>Keypose Move</li></ul></td>
+<td align="left">-</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left"><ul><li>RJ45</li></ul></td>
+<td align="left">Head Plus</td>
+<td align="left"><ul><li>Real-Time Move</li><li>Joystick Move</li><li>Keypose Move</li></ul></td>
+<td align="left">-</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left"><ul><li>Canbus</li></ul></td>
+<td align="left">HeadPlus Pro v2</td>
+<td align="left"><ul><li>Real-Time Move</li><li>Joystick Move</li><li>Keypose Move</li></ul></td>
+<td align="left">-</td>
+<td align="left">-</td>
+</tr>
+</tbody>
+</table>
+<h4 id="pairing">Pairing</h4>
+<p><a href="../definitions.html#pairing">Pairing</a> is completed via Link Adapter using API commands. </p>
+<h4 id="calibration-and-limits">Calibration and Limits</h4>
+<h4 id="motion-control">Motion Control</h4>
+<p>Link Adapter supports three two types of movement;</p>
+<ul>
+<li><a href="../definitions.html#joystick-move">Joystick Move</a></li>
+<li><a href="../definitions.html#keypose-move">Keypose Move</a></li>
+</ul>
+<h4 id="limitations">Limitations</h4>
+<ul>
+<li>Wireless connection does not support Real-Time movement.</li>
+<li>If there is much wifi or electromagnetic signal in the working environment, that noise can affect the connection.</li>
+<li></li>
+</ul>
+<p><a href="../limitations.html#real-time-move">Details</a></p>
+<h3 id="rj45">RJ45</h3>
+<p>The connection is established with a patch cable. The patch cable is plugged into whichever device you want to operate with the Link Adapter.</p>
+<h4 id="pairing_1">Pairing</h4>
+<p>RJ45 connection type does not have a pairing capability. So if you want to control other devices over the master device, you should use the mobile application apps.</p>
+<h4 id="motion-control_1">Motion Control</h4>
+<p>RJ45 connection type supports three types of movement;</p>
+<ul>
+<li><a href="../definitions.html#real-time-move">Real-Time Move</a></li>
+<li><a href="../definitions.html#joystick-move">Joystick Move</a></li>
+<li><a href="../definitions.html#keypose-move">Keypose Move</a></li>
+</ul>
+<h4 id="limitations_1">Limitations</h4>
+<ul>
+<li>
+<p>There is only one device that can connect via cable.</p>
+</li>
+<li>
+<p>If there are devices paired via wireless except connected with cable, the Real-Time Move only works with the cable-connected device.</p>
+</li>
+</ul>
+<p><a href="../limitations.html#real-time-move">More Details About Limitations</a></p>
+<h3 id="link-connection">Link Connection</h3>
+<p>The Link connection means that each device is connected via link cable.</p>
+<table>
+<thead>
+<tr>
+<th align="left">Supported Connection Type</th>
+<th align="left">Supported Device</th>
+<th align="left">Supported Move Type</th>
+<th align="left">Supported Real-Time Axis</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><ul><li>Wireless</li></ul></td>
+<td align="left">All Devices</td>
+<td align="left"><ul><li>Joystick Move</li><li>Keypose Move</li></ul></td>
+<td align="left">-</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left"><ul><li>RJ45</li></ul></td>
+<td align="left">Head Plus</td>
+<td align="left"><ul><li>Real-Time Move</li><li>Joystick Move</li><li>Keypose Move</li></ul></td>
+<td align="left">-</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left"><ul><li>Canbus</li></ul></td>
+<td align="left">HeadPlus Pro v2</td>
+<td align="left"><ul><li>Real-Time Move</li><li>Joystick Move</li><li>Keypose Move</li></ul></td>
+<td align="left">-</td>
+<td align="left">-</td>
+</tr>
+</tbody>
+</table>
+<h4 id="pairing_2">Pairing</h4>
+<p><a href="../definitions.html#pairing">Pairing</a> is completed via Link Adapter using API commands.</p>
+<h4 id="calibration-and-limits_1">Calibration and Limits</h4>
+<h4 id="motion-control_2">Motion Control</h4>
+<p>Link connection type supports three types of movement;</p>
+<ul>
+<li><a href="../definitions.html#real-time-move">Real-Time Move</a></li>
+<li><a href="../definitions.html#joystick-move">Joystick Move</a></li>
+<li><a href="../definitions.html#keypose-move">Keypose Move</a></li>
+</ul>
+<h4 id="limitations_2">Limitations</h4>
+<p>Link connection needs to the cable connection between devices. So </p>
+<h3 id="how-to-control-your-device-with-link-adapter">How To Control Your Device With Link Adapter</h3>
+<p>The edelkrone SDK will notify you of each module plugged into the PC.</p>
+<p><img alt="link_id_ss" src="../res/link_id_adapter.png" /></p>
+<p>This notification appears in the notification area of your OS. That notification contains the Link ID of your link module. This ID is also required to distinguish if you have multiple modules when sending commands. </p>
+<p>You will then get a notification that the SDK has recognized your module and open a communication channel.</p>
+<p><img alt="open_connection" src="../res/connection_open.png" /></p>
+<h4 id="how-to-get-the-link-id-of-link-adapter-and-its-status">How to get the Link ID of Link Adapter and its status</h4>
+<p>To control your device, you first need to get the Link ID of the Link Adapter. You can get the Link ID of the Link Adapter. </p>
+<p><a href="../endpoints/commands/device/device.html#get-link-module-list-and-status">Get Link Module List and Status Command</a></p>
+<p>You can also use this command to get the status of the other link modules.</p>
+<h4 id="how-to-manage-multiple-devices">How to manage multiple devices</h4>
+<p>Paired device(s) after completing pairing are called a <a href="../definitions.html#bundle">bundle</a>. </p>
+<p>First of all, to manage your devices, you need to create a bundle by pairing your devices and Link Adapter. Or attach your link adapter to an already existing bundle.</p>
+<p>The link Adapter has three communication channels. Each channel has its unique pairing methods.</p>
+<p>It is explained below how to pair your device according to your chosen channel.</p>
+<h5 id="pairing_3">Pairing</h5>
+<h6 id="1-pairing-with-wireless-channel">1. Pairing with Wireless Channel</h6>
+<p>Link Adapter can create a bundle from zero or can attach itself to your already created bundle.</p>
+<p>To pair your devices with the Link Adapter, you need to know your devices' mac address. To get the mac addresses, you should scan command to the Link Adapter. </p>
+<p>You can also find from <a href="../endpoints/commands/link_module/link_wifi_commands.html#initiate-wireless-scan">here</a> more details about that api command.</p>
+<p>Warning!!!
+    Please be sure that your devices are energized.</p>
+<p>After then the Link Adapter will be gathered the mac addresses from its around. </p>
+<p>To get mac addresses from edelkrone SDK, you can use this <a href="../endpoints/commands/link_module/link_wifi_commands.html#get-current-wireless-scan-results">scan result command</a>.</p>
+<p>Now, you have mac addresses of your devices that you want to control. You can create a bundle or attach to already exist a bundle by using the below commands respectively.</p>
+<p><a href="../endpoints/commands/link_module/link_wifi_commands.html#create-bundle">"create bundle"</a> command creates a bundle by including itself.</p>
+<p><a href="../endpoints/commands/link_module/link_wifi_commands.html#attach-to-exist-bundle">"attach to exist bundle"</a> command to attach to an already existing bundle.</p>
+<p>You can follow the pairing status by using the pairing status command when sending a pairing command. You can send move commands when the pairing status is "ok". </p>
+<p><a href="../endpoints/commands/link_module/link_wifi_commands.html#get-pairing-status">"Get Pairing Status"</a></p>
+<h6 id="2-pairing-with-rj45">2. Pairing with RJ45</h6>
+<p>The pairing with RJ45 is automatically paired with the connected device via a patch cable. Paired device(s) after completing pairing are called a <a href="../definitions.html#bundle">bundle</a>. </p>
+<p>But, you may want to control multiple devices; you need to pair it with the device connected with the Link Adapter. But RJ45 does not have any pairing ability, and the edelkrone SDK does not have any pair command for RJ45; you can use the edelkrone mobile application to pair them.</p>
+<h6 id="2-pairing-canbus">2. Pairing CanBus</h6>
+<h4 id="how-to-get-the-status-of-the-edelkrone-device-in-the-bundle">How to get the status of the edelkrone device in the bundle</h4>
+<p>The bundle status is automatically updated from edelkrone devices when the pairing process is completed.</p>
+<p>The status contains paired devices information, supported axis, supported real-time axis, bundle state, axis values of the devices.</p>
+<p>You can get the status by using the command <a href="../endpoints/endpoints_http.html#status">status end point</a>.</p>
+<h4 id="send-move-command-to-your-bundle">Send move command to your bundle</h4>
+<p>There are four types of movement. Except for real-time moves, other movement types can be controlled over HTTP API. But, HTTP has several overheads; therefore, you need to prefer Websocket Protocol to control in real-time.</p>
+<p>Also check for <a href="../limitations.html">limitations</a>.</p>
+<h5 id="1-joystick">1. Joystick</h5>
+<p>This command takes the speed ratio in the axis to be moved and makes it move at that speed in that direction.</p>
+<p>This movement supports a five-axis that depends on your bundle.</p>
+<p>For example;
+Your bundle has three axes, for example, pan, tilt, and slide. And you want to send a move command in these three axes.</p>
+<p>Just add the axes you want and their speed ratio.</p>
+<p>You can also find more details about that api command  <a href="../endpoints/commands/move/move.html#joystick-move">here</a> </p>
+<h5 id="2-keypose">2. Keypose</h5>
+<p>You can save up to six poses. You can make a loop between these poses, or you can send your bundle from a point you want to a pose you want.</p>
+<h6 id="1-keypose-store-current-pose">1. Keypose Store Current Pose</h6>
+<p>When you send this command, a pose will be stored for you with an index number of your bundle at the moment.  </p>
+<p>You can also find from <a href="../endpoints/commands/keypose/keypose.html#keypose-store-current-pose">here</a> more details about that api command.</p>
+<h6 id="2-keypose-store-by-numeric-data">2. Keypose Store By Numeric Data</h6>
+<p>Numeric data means that your axis values, which are you want to save as pose.  </p>
+<p>You can also find from <a href="../endpoints/commands/keypose/keypose.html#keypose-store-by-numeric-data">here</a> more details about that api command.</p>
+<h6 id="3-keypose-move-with-fixed-duration">3. Keypose Move with Fixed Duration</h6>
+<p>You can make your bundle go from any point to a pose you want with this command. But this movement takes place with the fixed duration you give. But movement speed varies according to the given time.</p>
+<p>You can also find from <a href="../endpoints/commands/keypose/keypose.html#keypose-move-with-fixed-duration">here</a> more details about that api command.</p>
+<h6 id="4-keypose-move-with-fixed-speed">4. Keypose Move with Fixed Speed</h6>
+<p>You can make your bundle go from any point to a pose you want with this command. But this movement takes place with the fixed speed ratio you give. But movement duration varies according to the given speed ratio.</p>
+<p>You can also find <a href="../endpoints/commands/keypose/keypose.html#keypose-move-with-fixed-speed">here</a> more details about that api command.</p>
+<h6 id="5-loop-between-keyposes-with-fixed-duration">5.  Loop Between Keyposes with Fixed Duration</h6>
+<p>This command can create loops between the poses you recorded. This movement takes place with the fixed duration you give.
+But movement speed varies according to the given time.</p>
+<p>You can also find more details about that api command <a href="../endpoints/commands/keypose/keypose.html#loop-between-keyposes-with-fixed-duration">here</a> .</p>
+<h6 id="5-loop-between-keyposes-with-fixed-speed">5.  Loop Between Keyposes with Fixed Speed</h6>
+<p>With this command, you can create loops between the poses you recorded. This movement takes place with the fixed speed you give. But the duration of the movement varies according to the given speed ratio.</p>
+<p>You can also find from more details about that api command <a href="../endpoints/commands/keypose/keypose.html#loop-between-keyposes-with-fixed-speed">here</a> .</p>
+<h6 id="6-read-keypose-numeric-information">6. Read Keypose Numeric Information</h6>
+<p>With this command, you can read the axis values of the pose you stored. It takes an index as an argument and returns the information that you want.</p>
+<p>You can also find more details about that api command <a href="../endpoints/commands/keypose/keypose.html#read-keypose-numeric-information">here</a> .</p>
+<h6 id="7-delete-keypose">7. Delete Keypose</h6>
+<p>When you store a keypose, it occupies a slot in a keypose list. If you need to add a new keypose, you need to delete keypose.</p>
+<p>You can also find from more details about that api command <a href="../endpoints/commands/keypose/keypose.html#delete-keypose">here</a> .</p>
+<h5 id="3-focus-move">3. Focus Move</h5>
+<p>You can use it for focus movement when you plug a focus module into your head.</p>
+<p>You can also find more details about that api command <a href="../endpoints/commands/move/move.html#focus-manual-move">here</a> .</p>
+<h5 id="4-real-time-move">4. Real-Time Move</h5>
+<p>The  supports <a href="../definitions.html#real-time-move">Real-Time</a>.</p>
+<p>Real-Time movement needs a reliable communication channel. So wireless connection does not support the real-time movement. The HTTP protocol has some overheads.</p>
+<p>You can also find more details about that api command <a href="../endpoints/endpoints_ws.html">here</a> . </p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="stop_mot_mod.html" class="btn btn-neutral float-right" title="Stop mot mod">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../endpoints/commands/status/status.html" class="btn btn-neutral" title="Status"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../endpoints/commands/status/status.html" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="stop_mot_mod.html" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme_extra.js" defer></script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
